@@ -1,0 +1,95 @@
+<div class="innerpage">
+	<div class="rte">
+		<div class="section-header">
+			<h1 class="article__title" itemprop="name">{{ article.title }}</h1>
+		  
+			<div class="article__subtitle">
+		  {% if section.settings.blog_show_author %}
+		  <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+		  {% endif %}
+	
+		  {% if section.settings.blog_show_date %}
+		  <span class="article__date">
+			{{ article.published_at | time_tag: format: 'month_day_year' }}
+		  </span>
+		  {% endif %}
+			</div>
+			<div class="article-featured-image">
+		{% if article.image != blank %}
+			{{ article.image | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy' }}
+		{% endif %}
+			</div>
+		</div>
+		<div class="section-body">
+			{{ article.content }}
+        </div>
+	</div>
+	<div class="section-share">
+        {% if section.settings.show_share_buttons %}
+        	{% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+        {% endif %}
+	</div>	  
+</div>
+	
+	
+	
+	
+	
+	{% schema %}
+	{
+	  "name": {
+		"de": "Posts",
+		"en": "Posts",
+		"es": "Publicaciones",
+		"fr": "Articles",
+		"it": "Articoli",
+		"ja": "投稿",
+		"pt-BR": "Posts"
+	  },
+	  "settings": [
+		{
+		  "type": "checkbox",
+		  "id": "blog_show_author",
+		  "label": {
+			"de": "Autor anzeigen",
+			"en": "Show author",
+			"es": "Mostrar autor",
+			"fr": "Afficher l'auteur",
+			"it": "Mostra autore",
+			"ja": "執筆者を表示する",
+			"pt-BR": "Exibir autor(a)"
+		  },
+		  "default": true
+		},
+		{
+		  "type": "checkbox",
+		  "id": "blog_show_date",
+		  "label": {
+			"de": "Datum anzeigen",
+			"en": "Show date",
+			"es": "Mostrar fecha",
+			"fr": "Afficher la date",
+			"it": "Mostra data",
+			"ja": "日付を表示する",
+			"pt-BR": "Exibir data"
+		  },
+		  "default": true
+		},
+		{
+		  "type": "checkbox",
+		  "id": "show_share_buttons",
+		  "label": {
+			"de": "Buttons für Social Media anzeigen",
+			"en": "Show social sharing buttons",
+			"es": "Mostrar botones para compartir en redes sociales",
+			"fr": "Afficher les boutons de partage sur les médias sociaux",
+			"it": "Mostra i pulsanti per la condivisione sui social",
+			"ja": "ソーシャル共有ボタンを表示する",
+			"pt-BR": "Exibir botões de compartilhamento em redes sociais"
+		  },
+		  "default": true
+		}
+	  ]
+	}
+	{% endschema %}
+	

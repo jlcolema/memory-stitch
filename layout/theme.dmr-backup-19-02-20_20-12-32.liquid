@@ -1,0 +1,194 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+  <head>
+    <meta name="google-site-verification" content="SITE_VERIFICATION_KEY" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=SITE_VERIFICATION_KEY"></script>
+    <script async>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'SITE_VERIFICATION_KEY');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_button }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {%- endif -%}
+
+    {%- capture seo_title -%}
+    {%- if template == 'search' and search.performed == true -%}
+    {{ 'general.search.heading' | t: count: search.results_count }}: {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+    {%- else -%}
+    {{ page_title }}
+    {%- endif -%}
+    {%- if current_tags -%}
+    {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+    &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+    &ndash; {{ shop.name }}
+    {%- endunless -%}
+    {%- endcapture -%}
+    <title>{{ seo_title | strip }}</title>
+
+    {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% include 'social-meta-tags' %}
+
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'swatch.css' | asset_url | stylesheet_tag }}
+    {{ 'new-style.css' | asset_url | stylesheet_tag }}
+    {{ 'tachyons.css' | asset_url | stylesheet_tag }}
+
+
+    <script async>
+      var theme = {
+        strings: {
+          addToCart: {{ 'products.product.add_to_cart' | t | json }},
+          soldOut: {{ 'products.product.sold_out' | t | json }},
+          unavailable: {{ 'products.product.unavailable' | t | json }},
+          regularPrice: {{ 'products.product.regular_price' | t | json }},
+          sale: {{ 'products.product.on_sale' | t | json }},
+          showMore: {{ 'general.filters.show_more' | t | json }},
+          showLess: {{ 'general.filters.show_less' | t | json }},
+          addressError: {{ 'sections.map.address_error' | t | json }},
+          addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
+          addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+          authError: {{ 'sections.map.auth_error_html' | t | json }},
+          newWindow: {{ 'general.accessibility.link_messages.new_window' | t | json }},
+          external: {{ 'general.accessibility.link_messages.external' | t | json }},
+          newWindowExternal: {{ 'general.accessibility.link_messages.new_window_and_external' | t | json }}
+        },
+        moneyFormat: {{ shop.money_format | json }}
+      }
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+    {%- if template.directory == 'customers' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script>
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    <script src="{{ 'jquery-1.11.1.min.js' | asset_url }}"></script>
+    <script src="{{ 'bootstrap.min.js' | asset_url }}"></script>
+
+    <script src="{{ 'slick.js' | asset_url }}"></script>
+    <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'scroll_JT.js' | asset_url }}" defer></script>
+
+    {% if template == 'index' or template == 'product' %}
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" async></script>
+    <script src="{{ 'product-swatches.js' | asset_url }}" defer></script>
+    {% endif %}
+
+    {{ content_for_header }}
+	{%- include 'bold-options-hybrid' -%}
+    {%- include 'bold-product' with product, hide_action: 'header' -%}
+    {%- include 'bold-common' -%}
+     {{ 'bold.css' | asset_url | stylesheet_tag }}
+
+    {{ shop.metafields.loox["global_html_head"] }}
+    {% include 'scm-product-label-head' %}
+    {% include 'fhsprod-labelme-init' %}
+
+    <!-- Start Google Track Conversions -->
+    <script type="text/javascript" defer>
+      $(document).ready(function() {
+        $("form#Contact_footer").submit(function(e){
+          e.preventDefault();
+          ga('send', 'event', 'form', 'submit', 'Contact Footer');
+          $(this).off('submit');
+          setTimeout(function(){
+            e.currentTarget.submit();
+          }, 1000);
+        });
+        $(document).on("submit", "form.leadin-form-wrapper", function(e) {
+          e.preventDefault();
+          ga('send', 'event', 'form', 'submit', 'Contact Modal');
+          $(this).off('submit');
+          setTimeout(function(){
+            e.currentTarget.submit();
+          }, 1000);
+        });
+      });
+    </script>
+    <!-- End Google Track Conversions -->
+    <!-- Bing Ads UET tag -->
+    <script async>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"18003067"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+    </script>
+    <!-- Bing - Passing Sales Value -->
+    <script async>
+      window.uetq = window.uetq || [];
+      window.uetq.push({
+        'revenue_value': {{ total_price | money_without_currency }},
+        'currency': '{{ shop.currency }}'
+      });
+    </script>
+	<!-- End of Bing -->
+  {% include 'scapp-customerinfo' %}
+
+  {% render 'shogun-head' %}
+</head>
+  <body class="template-{{ template | split: '.' | first }}">
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    {% section 'header' %}
+
+    <div class="page-container" id="PageContainer">
+      {% if template == 'product' %}
+      <section class="all_sec_one">
+        <div class="breadcrumb_main">
+          <div class="container">
+            <nav class="breadcrumb_inner" role="navigation" aria-label="breadcrumbs">
+              <ul>
+                <li><a href="/collections/all"><i class="far fa-arrow-alt-circle-left"></i></a></li>
+                <li>Our Products</li>
+                <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+                <li>{{ product.title }}</li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      <div class="container-fluid">
+        <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">
+          {{ content_for_layout }}
+        </main>
+      </div>
+      {% section 'footer' %}
+
+      <div id="slideshow-info" class="visually-hidden" aria-hidden="true">
+        {{- 'sections.slideshow.navigation_instructions' | t -}}
+      </div>
+
+    </div>
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+      <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
+    </ul>
+
+    {{ shop.metafields.loox["global_html_body"] }}
+    {{ 'instant.js' | asset_url | script_tag }}<script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} window.KlarnaThemeGlobals.data_purchase_amount={{product.first_available_variant.price}};window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
+<script src="https://cdn.attn.tv/memorystitch/dtag.js"></script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!-- Custom Countdown - BEGIN -->
+<div class="countdown-container-container">
+  <div class="countdown-container">
+	<div class="item countdown-text">
+	  <strong>Today Only! <br> 25% off All Quilts <br><small>Use Code: COZYUP25</small></strong>
+	</div>
+	<div class="item countdown-timer">
+	  <img loading="lazy" src="https://gen.sendtric.com/countdown/w7qtwdw1q2" style="display: block;" />
+	</div>
+  </div>
+</div>
+
+<style>
+body.template-index #shopify-section-1593103849209 { 
+  margin-top: 0; 
+  padding-top: 0;
+}
+.countdown-container-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #384049;
+  color: #FFF;
+}
+.countdown-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "left right";
+  column-gap: 10px;
+  row-gap: 10px;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 0;
+}
+.countdown-container .countdown-timer img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+.countdown-container .item {
+  padding: 10px;
+}
+.countdown-container .countdown-text {
+  grid-area: left;
+  text-align: center;
+  font-size: 23px;
+line-height: 110%;
+padding: 10px 2px;
+}
+.countdown-container .countdown-timer {
+  grid-area: right;
+}
+.countdown-container .countdown-text strong {
+  font-weight: normal;
+}
+@media screen and (max-width:500px) {
+  .countdown-container {
+	  grid-template-columns: 1fr;
+	  grid-template-areas: 
+	  "left"
+	  "right";
+  }
+  .countdown-container .countdown-text {
+	padding-bottom: 0;
+  }
+  .countdown-container .countdown-timer {
+	padding-top: 0;
+  }
+}
+</style>
+<!-- Custom Countdown - END -->

@@ -1,0 +1,41 @@
+{% comment %}
+Custom static metadata for select pages
+created by David LeFlore at Nuclear Networking
+2020-12-16
+{% endcomment %}
+
+{% if template == 'product' %}
+{% assign editDesc = product.description | strip_html | newline_to_br  %}
+
+{%- if product.featured_image -%}
+{%- assign image_size = product.featured_image.width | append: 'x' -%}
+{%- endif -%}
+
+<script type="application/ld+json" async>
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "@id": {{ canonical_url | json }},
+  "name": "{{ product.title | escape }}",
+  "url": "{{ shop.url }}{{ product.url }}",
+  "image": "https:{{ product.featured_image.src | img_url: image_size }}",
+  "description": "{{- editDesc | replace: "<br />", "\n" | strip_newlines -}}",
+
+  "sku": "{{ current_variant.sku }}",
+
+  "brand": {
+    "@type": "Thing",
+    "name": "{{ product.vendor | escape }}"
+  },
+  "offers": {
+        "@type" : "Offer",
+        "availability" : "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "price" : "{{ product.price | divided_by: 100.00 }}",
+        "priceCurrency" : "{{ cart.currency.iso_code }}",
+        "priceValidUntil": "{{ 'now' | date: "%s" | plus: 31536000  | date: "%Y-%m-%d" }}",
+        "url": "{{ shop.url }}{{ product.url }}"
+}
+}
+</script>
+
+{% endif %}

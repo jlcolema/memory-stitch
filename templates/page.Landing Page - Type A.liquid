@@ -1,0 +1,135 @@
+<div class="innerpage landingpage-a">
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item">
+        <div class="section-header text-center ">
+          <h1>{{ page.title }}</h1>
+        </div>
+
+        <div class="section_page-content rte">
+          {{ page.content }}
+        </div>
+        
+        <hr>
+        
+        <div class="section_how-it-works">
+          {% section 'section_how-it-works' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style><!--
+.innerpage.landingpage-a {
+  padding-top: 0;
+}
+.page-width {
+  max-width: unset;
+  padding: 0;
+}
+.grid__item {
+  float: none;
+  padding: 0;
+}
+.content-wrapper, 
+.section_how-it-works {
+  padding: 0 55px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1400px;
+}
+.section-header {
+  display: none;
+}
+.page-titleheader {
+  display: flex;
+  width: 100%;
+  min-height: 500px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+.page-titleheader img {
+  object-fit: cover;
+  width: 100%;
+  max-width: unset;
+}
+.page-titleheader .titleheader-content {
+  position: absolute;
+  padding-bottom: 2rem;
+  color: #FFF;
+  text-align: center;
+}
+.page-titleheader .titleheader-content h1 {
+  font-family: 'oh livey', script;
+  font-size: 210px;
+  color: #FFF;
+  text-shadow: 0 10px 10px rgba(0,0,0,.6);
+}
+.page-titleheader .titleheader-content p {  
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 28px;
+  line-height: 140%;
+  color: #FFF;
+  text-shadow: 0 2px 4px rgba(0,0,0,.6);
+}
+
+@media screen and (max-width: 500px) {
+  .content-wrapper {
+  padding: 0 20px;
+}
+    .page-titleheader {
+      flex-wrap: wrap;
+    }
+  	.page-titleheader img {
+      object-fit: contain;
+    }
+    .page-titleheader .titleheader-content {
+      position: relative;
+    }
+   .page-titleheader .titleheader-content h1 {
+		font-size: 100px;
+  		line-height: 0.8;
+	}
+  	.page-titleheader .titleheader-content p {
+		font-size: 16px;
+	}
+}
+
+body .simple-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-gap: 6rem;
+justify-items: start;
+list-style: none;
+margin: 0 auto;
+padding: 0;
+}
+body .simple-grid.col-2 {
+grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 500px) {
+  	body .simple-grid.col-2 {
+		grid-template-columns: 1fr;
+	}
+}
+body .simple-grid li {
+display: block;
+width: 100%;
+list-style: none;
+margin: 0;
+padding: 0;
+text-align: center;
+}
+body .simple-grid li img {
+width: 100%;
+max-width: none;
+}
+body .section_products .simple-grid {
+max-width: 690px;
+}
+--></style>

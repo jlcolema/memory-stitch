@@ -1,0 +1,76 @@
+<section class="home_sec_eight">
+  <div class="faq_main">
+    <h2 class="fs4 text-center">{{ section.settings.title }}</h2>
+    {% assign s = 1 %}
+    {% for block in section.blocks %}
+    <div class="faqs">
+      <div class="faq_heading" onclick="showds({{ s }})" id="q{{ s }}">
+        <h3>{{ block.settings.question }} <span><i class="fas fa-angle-down"></i></span></h3>
+        <div class="faq_content" id="tab{{ s }}" style="display: none;">
+          <p> {{ block.settings.ans }}</p>
+        </div>
+      </div>
+    </div>
+    {% assign s = s | plus: 1 %}
+    {% endfor %}
+    <a href="{{ section.settings.link }}" title="" alt="" class="btn-secondary mt5">See More</a>
+    <!-- <h5>{{ section.settings.tag }}</h5> -->
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home FAQ",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Banner Title",
+        "default": "The Powerful Men"
+      },
+      {
+        "id": "tag",
+        "type": "textarea",
+        "label": "FAQ Tag Line",
+        "default": "Don’t see an answer to your question here? Contact US"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "repeat",
+        "name": "Slider",
+        "settings": [
+		   {
+            "id": "question",
+            "type": "text",
+        	"label": "question Title",
+        	"default": "This is a dropdown for a frequently asked question ?"
+          },
+		  {
+            "id": "ans",
+            "type": "textarea",
+        	"label": " ans Line",
+        	"default": "This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question "
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home FAQ",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

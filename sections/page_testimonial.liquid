@@ -1,0 +1,207 @@
+<section class="testimonial_sec_one ">
+  <div class="faq_main faq_main_product faq_main_testimonial ">
+    <h4> {{ section.settings.testimonial_title_main }}</h4>
+    <h6>{{ section.settings.testmionial_tag_main }}</h6>
+    <div class="dg">
+      {% for block in section.blocks %}
+      {% if block.type == 'testmoni_user' %}
+        <div class="testmonial_main">
+          <div class="center cover br-100 w5 h5" style="background:url('{{ block.settings.testmonial_img | img_url: 'master' }}') center;"></div>
+          <h4>{{ block.settings.btn }}</h4>
+          <h5>{{ block.settings.tag }}</h5>
+        </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="ourstore_sec_three">
+  <div class="testimonial_slider_valur">
+    <div class="our_values_slider testtimonial_slider_main">
+      {% for block in section.blocks %}
+      {% if block.type == 'testimonial_slider' %}
+      <div class="testtimonial_slider_mai">
+        <div class="col-lg-4 col-ms-4 col-sm-4 col-xs-12">
+          <div class="testimonial_slider_img" style="background-image:url({{ block.settings.testimonial_img | img_url: 'master' }})" >
+          </div>
+        </div>
+        <div class="col-lg-8 col-ms-8 col-sm-8 col-xs-12">
+          <div class="testimonial_slider_content">
+            <h4>{{ block.settings.testimonial_title }}</h4>
+            <h5>{{ block.settings.testimonial_tag }}</h5>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="testimonial_slider">
+  <div class="customer_review">
+    <h4>{{ section.settings.review }}</h4>
+    {% for product in collections['all'].products %}
+    {% if product.metafields.spr.reviews %}
+    <div class="revrep">
+      <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+        <h4><span class="title">{{ product.title }}</span></h4>
+      </a>
+      <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+    <div class="clearfix"></div>
+    <br/>
+    <a href="{{ section.settings.link_review }}" class="btn">{{ section.settings.review_btn }} </a>
+  </div>
+</section>
+
+<section class="home_sec_nine">
+    <div class="happy_customers_main">
+        <h4 class="tc">{{ section.settings.happy_title }}</h4><br />
+        <div id="insta-feed"></div>
+        <h5>{{ section.settings.happy_tag }}</h5>
+        <a href="{{ section.settings.happy_link }}" class="btn">{{ section.settings.happy_btn }}</a>
+    </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Page Testimonial",
+    "settings": [
+		  {
+            "id": "testimonial_title_main",
+            "type": "text",
+        	"label": "testimonial title",
+        	"default": "Testimonial"
+          },
+		  {
+            "id": "testmionial_tag_main",
+            "type": "textarea",
+        	"label": "testmonial Tag Line",
+        	"default": "Lead-in copy about this page."
+          },
+			{
+            "id": "review",
+            "type": "text",
+        	"label": "review title",
+        	"default": "Customers Review"
+          },
+			{
+            "id": "review_btn",
+            "type": "text",
+        	"label": "review btn",
+        	"default": " + MORE"
+          },
+			{
+            "id": "review_img",
+            "type": "image_picker",
+        	"label": "review Image"
+          },
+		   {
+            "id": "link_review",
+            "type": "url",
+        	"label": "Button Link"
+          },
+	      {
+            "id": "happy_title",
+            "type": "text",
+        	"label": "Main Title",
+        	"default": "- PHOTOS FROM HAPPY CUSTOMERS- "
+          },
+		  {
+            "id": "happy_tag",
+            "type": "textarea",
+        	"label": "Buttom Tag Line",
+        	"default": "Ready to transform your <br> t-shirts into the perfect gift?"
+          },
+		  {
+            "id": "happy_btn",
+            "type": "text",
+        	"label": "Button Label",
+        	"default": "CREATE YOURS TODAY"
+          },
+		  {
+            "id": "happy_link",
+            "type": "url",
+          "label": "Button Link",
+          "default": "/collections/all"
+          }
+	],
+	"blocks": [
+      {
+        "type": "testmoni_user",
+        "name": "Testimonial User",
+        "settings": [
+		  {
+            "id": "testmonial_img",
+            "type": "image_picker",
+        	"label": "testimonial  Image"
+          },
+		  {
+            "id": "tag",
+            "type": "textarea",
+        	"label": "Banner Tag Line",
+        	"default": "This is a tesun,nial from a <br> customer. This is a testimonial from <br> a customer. This is a testimonial<br> from a customer. This is a <br> testimonial from a customer. This is <br> a testimonial from a customer."
+          },
+		  {
+            "id": "btn",
+            "type": "text",
+        	"label": "Button Label",
+        	"default": "SPENCER RILEY "
+          }
+        ]
+      },
+      {
+        "type": "testimonial_slider",
+        "name": "Testimonial Slider",
+        "settings": [
+		  {
+            "id": "testimonial_img",
+            "type": "image_picker",
+        	"label": "testimonial  Image"
+          },
+			{
+            "id": "testimonial_title",
+            "type": "text",
+        	"label": "testimonial title",
+        	"default": "The best t-shirt quilt I’ve ever seen!"
+          },
+			{
+            "id": "testimonial_tag",
+            "type": "textarea",
+        	"label": "Testimonial Tag Line",
+        	"default": "-LEANNA JOHNSON"
+          }
+        ]
+      },
+		{
+        "type": "happy_customery",
+        "name": "Happy Customery",
+        "settings": [
+
+		  {
+            "id": "happy_img",
+            "type": "image_picker",
+        	"label": "happy costumer Image"
+          }
+
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+.testimonial_sec_one .dg {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 4rem;
+}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

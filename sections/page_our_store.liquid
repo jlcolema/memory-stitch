@@ -1,0 +1,423 @@
+<section class="home_sec_one">
+    <div class="home_banner ourstore_banner" style="background-image: url('{{ section.settings.banner | img_url: 'master' }}');">
+        <div class="home_banner_inner home_banner_inner_our_store">
+            <h1>{{ section.settings.banner_title }}</h1>
+            <p class="text-center i fs2">{{ section.settings.banner_tag }}</p>
+            <div class="creating creating_one creating_ourstory">
+                <a class="btn2 dn" data-target="#videoModal" data-thevideo="//www.youtube.com/embed/{{ section.settings.banner_link }}" data-toggle="modal">
+                    <i class="fas fa-play"></i>
+                    {{ section.settings.banner_btn }}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ourstore_sec_one">
+    <div class="we_are">
+      <h2 class="dark-text text-center fs3 fw7 mb3">{{ section.settings.we_are_title }}</h2>
+      <h3 class="fs4 text-center base mb5">{{ section.settings.we_are_tag }}</h3>
+
+<!--         <h4>{{ section.settings.we_are_title }}
+        </h4>
+        <h5>{{ section.settings.we_are_tag }}</h5> -->
+        <p>{{ section.settings.we_are_content }}</p>
+    </div>
+</section>
+
+<section class="home_sec_three  css-grid items-stretch">
+    <div class="free_space hidden-xs">
+        <div class="testimonial_img h-100">
+            {{ section.settings.testimonial_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Testimonial Image', style: 'object-fit: cover;height: 100%;' }}
+        </div>
+    </div>
+    <div class="free_space">
+        <div class="testimonial_content" style="background-color:{{ section.settings.testimonial_color }}  ">
+            <div class="testimonial_content_inner testimonial_content_inner_our_story">
+              <h2 class="mb4 fs3 text-center">{{ section.settings.testimonial_title }}</h2>
+                <p>{{ section.settings.testimonial_tag }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="free_space visible-xs">
+        <div class="testimonial_img h-100">
+            {{ section.settings.testimonial_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Testimonial Image', style: 'object-fit: cover;height: 100%;' }}
+        </div>
+    </div>
+    <div class="free_space">
+        <div class="testimonial_content" style="background-color: {{ section.settings.testimonial_color_two }}">
+            <div class="testimonial_content_inner testimonial_content_inner_font testimonial_content_inner_our_story ">
+                <h2 class="mb4 base fs3 text-center">{{ section.settings.testimonial_title_two }}</h2>
+                <p>{{ section.settings.testimonial_tag_two }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="free_space">
+        <div class="testimonial_img h-100">
+            {{ section.settings.testimonial_img_two | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Testimonial Image', style: 'object-fit: cover;height: 100%;' }}
+        </div>
+    </div>
+    <div class="free_space hidden-xs">
+        <div class="testimonial_img h-100">
+            {{ section.settings.testimonial_img_three | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Testimonial Image', style: 'object-fit: cover;height: 100%;' }}
+        </div>
+    </div>
+    <div class="free_space">
+        <div class="testimonial_content" style="background-color:{{ section.settings.testimonial_color_three }}  ">
+            <div class="testimonial_content_inner testimonial_content_inner_our_story">
+                              <h2 class="mb4 fs3 text-center">{{ section.settings.testimonial_title_three }}</h2>
+                <p>{{ section.settings.testimonial_tag_three }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clearfix"></div>
+
+<section class="ourstore_sec_three">
+    <div class="we_are we_are_our_story">
+        <div class="we_are_our_story_content">
+          	<h2 class="dark-text text-center fs3 fw7 mb3">{{ section.settings.how_made_title }}</h2>
+      		<h3 class="fs4 text-center base mb5">{{ section.settings.how_made_tag }}</h3>
+            <p>{{ section.settings.how_made_content }}</p>
+        </div>
+        {% comment %}
+    <div class="we_are_our_story_img">
+      <a style="cursor:pointer" data-toggle="modal" data-target="#videoModal" data-theVideo="//www.youtube.com/embed/{{ section.settings.how_made_video }}">
+        {{ section.settings.home_made_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Video Modal Image' }}
+      </a>
+      <h4>
+        <a style="cursor:pointer" data-toggle="modal" data-target="#videoModal" data-theVideo="//www.youtube.com/embed/{{ section.settings.how_made_video }}">
+        <i class="fas fa-play"></i>
+        </a>
+      </h4>
+    </div>
+    {% endcomment %}
+    </div>
+</section>
+
+<section class="home_sec_five overflow-hidden">
+    <div class="rellax" data-rellax-percentage="0.5" data-rellax-speed="-3">
+        {{ section.settings.our_sec_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Parallax Image' }}
+    </div>
+</section>
+
+<section class="ourstore_sec_three">
+    <div class="we_are we_are_our_story">
+        <div class="we_are_our_story_content">
+          	<h2 class="dark-text text-center fs3 fw7 mb3">{{ section.settings.located_title }}</h2>
+      		<h3 class="fs4 text-center base mb5">{{ section.settings.located_tag }}</h3>
+
+            <p>{{ section.settings.located_contebt }}
+            </p>
+        </div>
+        <div class="we_are_our_story_img">
+            {{ section.settings.located_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Our Story Image' }}
+        </div>
+    </div>
+</section>
+
+<section class="ourstore_sec_three">
+    <div class="our_values">
+        <h2 class="mb4 fs3 text-center fw7 dark-text">{{ section.settings.our_values_title }}</h2>
+        <div class="our_values_slider our_values_slider2">
+            {% for block in section.blocks %}
+                {% if block.type == 'our_valuse' %}
+                    <h4>{{ block.settings.our_valuse_slider }}</h4>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="home_sec_nine">
+    <div class="happy_customers_main">
+        <h2 class="mb4 fs3 text-center fw7 dark-text">{{ section.settings.happy_customers_title }}</h2>
+        <div id="insta-feed"></div>
+        <h3 class="fs4 dark-text text-center mt5">{{ section.settings.create_your_title }}</h3>
+        <a href="{{ section.settings.create_your_link }}" class="btn">{{ section.settings.create_your_btn }}</a>
+    </div>
+</section>
+
+<!--Start Play Video-->
+<div aria-hidden="true" aria-labelledby="videoModal" class="modal fade" id="videoModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;</button>
+                <div>
+                    <iframe height="400" src="" style="padding:10px; background:#FFF" width="100%"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Play Video-->
+
+<script async>
+autoPlayYouTubeModal();
+function autoPlayYouTubeModal() {
+  var trigger = $("body").find('[data-toggle="modal"]');
+  trigger.click(function () {
+    //$('.snow').show();
+    var theModal = $(this).data("target"),
+        videoSRC = $(this).attr("data-theVideo"),
+        videoSRCauto = videoSRC + "?autoplay=1";
+    $(theModal + ' iframe').attr('src', videoSRCauto);
+    $(theModal + ' button.close').click(function () {
+      //$('.snow').hide();
+      $(theModal + ' iframe').attr('src', videoSRC);
+    });
+    $('.modal').click(function () {
+      $(theModal + ' iframe').attr('src', videoSRC);
+    });
+  });
+}
+</script>
+
+{% schema %}
+
+{
+    "name": "Our Story Page",
+    "settings": [
+        {
+            "id": "banner",
+            "type": "image_picker",
+            "label": "Banner background Image"
+        }, {
+            "id": "banner_title",
+            "type": "text",
+            "label": "Banner Title",
+            "default": "Our story"
+        }, {
+            "id": "banner_tag",
+            "type": "textarea",
+            "label": "Banner Tag Line",
+            "default": "We’ll help you tell story"
+        }, {
+            "id": "banner_btn",
+            "type": "text",
+            "label": "Button Label",
+            "default": "Watch our story"
+        }, {
+            "id": "banner_link",
+            "type": "text",
+            "label": "Video ID"
+        }, {
+            "id": "we_are_title",
+            "type": "text",
+            "label": "We Are Title",
+            "default": "- WHO WE ARE -"
+        }, {
+            "id": "we_are_tag",
+            "type": "textarea",
+            "label": "We Are  Tag Line",
+            "default": "It's not about what we make; it's about how we make you feel "
+        }, {
+            "id": "we_are_content",
+            "type": "textarea",
+            "label": "We Are  Content",
+            "default": " We consider it a compliment when people tell us that MemoryStitch is out of the ordinary. MemoryStitch doesn't think of itself as just a company; we're family. Having many years of quilting experience, we love impacting the lives of our cue turners and team. Welcoming our customers into our family by creating T-shirt quilts that won't break the bank. MemoryStitch proudly embraces change and supports entrepreneurial attitudes We believe in a strong work ethic, producing unsurpassed T-shirt quilts and other textile products, and providing outstanding customer service. Understand that our customers may not remember exactly what we said or did, but they will always remember how we made them feel. "
+        }, {
+            "id": "testimonial_img",
+            "type": "image_picker",
+            "label": "Features Image"
+        }, {
+            "id": "testimonial_title",
+            "type": "text",
+            "label": "Testimonial Title",
+            "default": "- COSTOMER TESTIMONIAL -"
+        }, {
+            "id": "testimonial_tag",
+            "type": "textarea",
+            "label": "Testimonial Tag Line",
+            "default": "This is a short testimonial quote with an image of the person who said it to the left"
+        }, {
+            "id": "testimonial_btn",
+            "type": "text",
+            "label": "Button Label",
+            "default": "READ MORE"
+        }, {
+            "id": "testimonial_link",
+            "type": "url",
+            "label": "Button Link"
+        }, {
+            "id": "testimonial_color",
+            "type": "color",
+            "label": "color code"
+        }, {
+            "id": "testimonial_img_two",
+            "type": "image_picker",
+            "label": "Features Image"
+        }, {
+            "id": "testimonial_title_two",
+            "type": "text",
+            "label": "Testimonial Title_two",
+            "default": "- HOW TO PREP -"
+        }, {
+            "id": "testimonial_tag_two",
+            "type": "textarea",
+            "label": "Testimonial Tag Line_two",
+            "default": "Value sell headline about instructions and what it takes to prepare the clothing"
+        }, {
+            "id": "testimonial_btn_two",
+            "type": "text",
+            "label": "Button Label",
+            "default": "READ MORE"
+        }, {
+            "id": "testimonial_link_two",
+            "type": "url",
+            "label": "Button Link"
+        }, {
+            "id": "testimonial_color_two",
+            "type": "color",
+            "label": "color code"
+        }, {
+            "id": "testimonial_img_three",
+            "type": "image_picker",
+            "label": "Features Image"
+        }, {
+            "id": "testimonial_title_three",
+            "type": "text",
+            "label": "Testimonial Title_three",
+            "default": "- HOW TO PREP -"
+        }, {
+            "id": "testimonial_tag_three",
+            "type": "textarea",
+            "label": "Testimonial Tag Line_three",
+            "default": "Value sell headline about instructions and what it takes to prepare the clothing"
+        }, {
+            "id": "testimonial_btn_three",
+            "type": "text",
+            "label": "Button Label",
+            "default": "READ MORE"
+        }, {
+            "id": "testimonial_link_three",
+            "type": "url",
+            "label": "Button Link"
+        }, {
+            "id": "testimonial_color_three",
+            "type": "color",
+            "label": "color code"
+        }, {
+            "id": "how_made_title",
+            "type": "text",
+            "label": "How made title",
+            "default": "HOW IT'S MADE"
+        }, {
+            "id": "how_made_tag",
+            "type": "text",
+            "label": "How Made Tag",
+            "default": "the big picture"
+        }, {
+            "id": "how_made_content",
+            "type": "text",
+            "label": "How Made content ",
+            "default": "MemoryStitch quickly creates affordable, high-quality upcycled quilts and other textile goods from well-loved t-shirts. Doing so in order to improve the lives of our customers while also helping the planet, and positively impacting the community."
+        }, {
+            "id": "home_made_img",
+            "type": "image_picker",
+            "label": "How Made Image"
+        }, {
+            "id": "how_made_video",
+            "type": "text",
+            "label": "How Made Video ID"
+        }, {
+            "id": "our_sec_img",
+            "type": "image_picker",
+            "label": "Our sec  Image"
+        }, {
+            "id": "located_title",
+            "type": "text",
+            "label": "located Title",
+            "default": "- LOCALLY MADE IN NEBRASKA -"
+        }, {
+            "id": "located_tag",
+            "type": "textarea",
+            "label": "located Tag ",
+            "default": "We're located smack dab in <br> the middle of the heartland "
+        }, {
+            "id": "located_contebt",
+            "type": "textarea",
+            "label": "located contebt",
+            "default": "This would be copy talking about where the headquarters are located <br> and where the quilts are manufactured in Lincoln's State Penn."
+        }, {
+            "id": "located_img",
+            "type": "image_picker",
+            "label": "Located  Image"
+        }, {
+            "id": "our_values_title",
+            "type": "text",
+            "label": "our values Title",
+            "default": "-OUR VALUES-"
+        }, {
+            "id": "happy_customers_title",
+            "type": "text",
+            "label": "happy customers Title",
+            "default": "- PHOTOS FROM HAPPY CUSTOMERS- "
+        }, {
+            "id": "create_your_title",
+            "type": "text",
+            "label": "create your  Title",
+            "default": "Ready to transform your <br> T-shirts ionto the perfect gift?"
+        }, {
+            "id": "create_your_btn",
+            "type": "text",
+            "label": "Button Label",
+            "default": "CREATE YOURS TODAY"
+        }, {
+            "id": "create_your_link",
+            "type": "url",
+            "label": "Button Link",
+            "default": "/collections/all"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "our_valuse",
+            "name": "Our Values",
+            "settings": [
+                {
+                    "id": "our_valuse_slider",
+                    "type": "text",
+                    "label": "our values slider",
+                    "default": "We sweat the ssmall stuff"
+                }
+            ]
+        }, {
+            "type": "happy_customer",
+            "name": "Happy Customers",
+            "settings": [
+                {
+                    "id": "happy_img",
+                    "type": "image_picker",
+                    "label": "happy Customery  Image"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+.home_sec_five {
+    height: 50vw;
+}
+
+.rellax {
+    height: 75vw;
+}
+
+.rellax img {
+    object-fit: cover;
+}
+
+{% endstylesheet %}
+
+{% javascript %}
+
+var rellax = new Rellax('.rellax');
+
+{% endjavascript %}
+
+{{ 'https://unpkg.com/rellax@1.9.1/rellax.js' | script_tag }}

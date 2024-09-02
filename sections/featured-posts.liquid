@@ -1,0 +1,149 @@
+{% paginate blog.articles by 3 %}
+
+
+  <section class="recent-blog-posts">
+    <p class="h2 text-center">More Blog Articles</p>
+    
+    <div class="how_work">
+      <div class="dg">
+        
+
+          {% for article in blog.articles %}
+            <div class="your_story your_story_faq">
+              <a href="{{ article.url }}" class="blog-item--image aspect-ratio aspect-ratio--4x3 mb4 db mw7 center">
+                {{ article.image | image_url: width: 300, height: 300 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: article.title, class: 'aspect-ratio--object cover', style: 'object-fit: cover;' }}
+                <!-- <div class="aspect-ratio--object cover" style="background:url({{ article.image | img_url: '300x300' }}) center;"><span class="sr-only">{{ article.title }}</span></div> -->
+              </a>
+              <p class="blog-item--title"><a href="{{ article.url }}">
+                {% if section.settings.blog_show_date %}
+                  <span class="article__date">
+                    {{ article.published_at | time_tag: '%b %d' }} |
+                  </span>
+                {% endif %}
+                {{ article.title }}</a>
+              </p>
+              <!-- 
+              {% if section.settings.blog_show_author %}
+                  <p class="article__author black">{{ 'blogs.article.by_author' | t: author: article.author }}</p>
+                {% endif %}
+              <p style="padding-top:0">
+              {% if article.excerpt.size > 0 %}
+                {{ article.excerpt }}
+              {% else %}
+                {{ article.content | strip_html | truncate: 150 }}
+              {% endif %}
+              </p> -->
+              <!-- <a href="{{ article.url }}" class="btn">Read More</a> -->
+            </div>
+          {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+
+
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": {
+    "de": "Blogseiten",
+    "en": "Blog pages",
+    "es": "Páginas del blog",
+    "fr": "Pages du blog",
+    "it": "Pagine del blog",
+    "ja": "ブログページ",
+    "pt-BR": "Páginas do blog"
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "de": "Layout",
+        "en": "Layout",
+        "es": "Diseño",
+        "fr": "Mise en page",
+        "it": "Layout",
+        "ja": "レイアウト",
+        "pt-BR": "Layout"
+      },
+      "default": "list",
+      "options": [
+        {
+          "value": "grid",
+          "label": {
+            "de": "Raster",
+            "en": "Grid",
+            "es": "Cuadrícula",
+            "fr": "Grille",
+            "it": "Griglia",
+            "ja": "グリッド",
+            "pt-BR": "Grade"
+          }
+        },
+        {
+          "value": "list",
+          "label": {
+            "de": "Liste",
+            "en": "List",
+            "es": "Lista",
+            "fr": "Liste",
+            "it": "Elenco",
+            "ja": "リスト",
+            "pt-BR": "Lista"
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": {
+        "de": "Autor anzeigen",
+        "en": "Show author",
+        "es": "Mostrar autor",
+        "fr": "Afficher l'auteur",
+        "it": "Mostra autore",
+        "ja": "執筆者を表示する",
+        "pt-BR": "Exibir autor(a)"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": {
+        "de": "Datum anzeigen",
+        "en": "Show date",
+        "es": "Mostrar fecha",
+        "fr": "Afficher la date",
+        "it": "Mostra data",
+        "ja": "日付を表示する",
+        "pt-BR": "Exibir data"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .how_work .dg {
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    .how_work .dg {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1rem 3rem;
+    }
+  }
+{% endstylesheet %}
+
+
+
+
+

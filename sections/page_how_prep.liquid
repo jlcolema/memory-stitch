@@ -1,0 +1,321 @@
+<section class="hone_sec_two how_to_prep">
+  <div class="container">
+    <div class="how_work">
+      <h2 class="fs4 center">{{ section.settings.how_work_tag }}</h2>
+      <strong class="fs3 center">{{ section.settings.how_work_title }}</strong>
+
+      <div class="row">
+        {% for block in section.blocks %}
+        {% if block.type == 'how_Work' %}
+        <div class='col-lg-4 col-sm-4 col-md-4 col-xs-12'>
+          <div class="your_story">
+            <div class="ypur_story_img faqpage_img">
+              {{ block.settings.how_work_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy' }}
+            </div>
+            <h4>{{ block.settings.how_work_title }}  </h4>
+            <p>{{ block.settings.how_work_tag }}</p>
+            <a href="{{ block.settings.how_work_link }}" class="btn">{{ block.settings.how_work_btn }}	</a>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home_sec_three css-grid items-stretch">
+  <div class="free_space hidden-xs">
+    <div class="testimonial_img h-100">
+      {{ section.settings.testimonial_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', style: 'object-fit: cover;height: 100%;' }}
+    </div>
+  </div>
+  <div class="free_space">
+    <div class="testimonial_content" style="background-color:{{ section.settings.testimonial_color }}  ">
+      <div class="testimonial_content_inner testimonial_content_inner_our_story pa4">
+        <h4 >{{ section.settings.testimonial_title }}</h4>
+        <p>{{ section.settings.testimonial_tag }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="free_space visible-xs">
+    <div class="testimonial_img h-100">
+      <img loading="lazy" src="{{ section.settings.testimonial_img | img_url: 'master' }}" style="object-fit: cover;height: 100%;" />
+    </div>
+  </div>
+  <div class="free_space">
+    <div class="testimonial_content" style="background-color: {{ section.settings.testimonial_color_two }}">
+      <div class="testimonial_content_inner testimonial_content_inner_font testimonial_content_inner_our_story pa4">
+        <h4 style="color:#26b0c7;">{{ section.settings.testimonial_title_two }}</h4>
+        <p>{{ section.settings.testimonial_tag_two }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="free_space">
+    <div class="testimonial_img h-100">
+      {{ section.settings.testimonial_img_two | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Testimonial Image', style: 'object-fit: cover;height: 100%;' }}
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<section class="ourstore_sec_three">
+  <div class="we_are we_are_our_story">
+    <div class="we_are_our_story_content">
+      <h5>{{ section.settings.located_tag }}</h5>
+      <p>{{ section.settings.located_content }} </p>
+    </div>
+  </div>
+</section>
+<section class="home_sec_five overflow-hidden">
+  <div class="rellax" data-rellax-speed="-3" data-rellax-percentage="0.5">
+    {{ section.settings.our_sec_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy' }}
+  </div>
+</section>
+
+<section class="home_sec_eight">
+  <div class="faq_main">
+    <h4>{{ section.settings.title }}</h4>
+    {% assign s = 1 %}
+    {% for block in section.blocks %}
+    {% if block.type == 'repeat' %}
+    <div class="faqs">
+      <div class="faq_heading" onclick="showds({{ s }})" id="q{{ s }}">
+        <h3>{{ block.settings.question }} <span><i class="fas fa-angle-down"></i></span></h3>
+        <div class="faq_content" id="tab{{ s }}" style="display: none;">
+          <p> {{ block.settings.ans }}</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% assign s = s | plus: 1 %}
+    {% endfor %}
+    <h5 class="mt5">{{ section.settings.faqtag }}</h5>
+  </div>
+</section>
+
+<div class="clearfix"></div>
+
+<!--Start Play Video-->
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div>
+          <iframe style="padding:10px; background:#FFF" width="100%" height="400" src=""></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Play Video-->
+
+<script async>
+autoPlayYouTubeModal();
+function autoPlayYouTubeModal() {
+  var trigger = $("body").find('[data-toggle="modal"]');
+  trigger.click(function () {
+    //$('.snow').show();
+    var theModal = $(this).data("target"),
+        videoSRC = $(this).attr("data-theVideo"),
+        videoSRCauto = videoSRC + "?autoplay=1";
+    $(theModal + ' iframe').attr('src', videoSRCauto);
+    $(theModal + ' button.close').click(function () {
+      //$('.snow').hide();
+      $(theModal + ' iframe').attr('src', videoSRC);
+    });
+    $('.modal').click(function () {
+      $(theModal + ' iframe').attr('src', videoSRC);
+    });
+  });
+}
+</script>
+
+{% schema %}
+  {
+    "name": "Our Story Page",
+    "settings": [
+           {
+              "id": "how_work_title",
+              "type": "text",
+              "label": "Features Main Title",
+              "default": "HOW IT WORKS"
+           },
+          {
+              "id": "how_work_tag",
+              "type": "textarea",
+              "label": "Features Main Tag Line",
+              "default": "Helping you tell your story"
+          },
+          {
+			"id": "testimonial_img",
+            "type": "image_picker",
+        	"label": "Features Image"
+          },
+		  {
+            "id": "testimonial_title",
+            "type": "text",
+        	"label": "Testimonial Title",
+        	"default": "- COSTOMER TESTIMONIAL -"
+          },
+		  {
+            "id": "testimonial_tag",
+            "type": "textarea",
+        	"label": "Testimonial Tag Line",
+        	"default": "This is a short testimonial quote with an image of the person who said it to the left"
+          },
+		  {
+            "id": "testimonial_btn",
+            "type": "text",
+        	"label": "Button Label",
+        	"default": "READ MORE"
+          },
+		  {
+            "id": "testimonial_link",
+            "type": "url",
+        	"label": "Button Link"
+          },
+			 {
+            "id": "testimonial_color",
+            "type": "color",
+        	"label": "color code"
+          },
+			{
+            "id": "testimonial_img_two",
+            "type": "image_picker",
+        	"label": "Features Image"
+          },
+		  {
+            "id": "testimonial_title_two",
+            "type": "text",
+        	"label": "Testimonial Title_two",
+        	"default": "- HOW TO PREP -"
+          },
+		  {
+            "id": "testimonial_tag_two",
+            "type": "textarea",
+        	"label": "Testimonial Tag Line_two",
+        	"default": "Value sell headline about instructions and what it takes to prepare the clothing"
+          },
+		  {
+            "id": "testimonial_btn_two",
+            "type": "text",
+        	"label": "Button Label",
+        	"default": "READ MORE"
+          },
+		  {
+            "id": "testimonial_link_two",
+            "type": "url",
+        	"label": "Button Link"
+          },
+			 {
+            "id": "testimonial_color_two",
+            "type": "color",
+        	"label": "color code"
+          },
+		  {
+            "id": "our_sec_img",
+            "type": "image_picker",
+        	"label": "Our sec  Image"
+          },
+		  {
+            "id": "located_tag",
+            "type": "textarea",
+        	"label": "located Tag ",
+        	"default": "We're located smack dab in <br> the middle of the heartland "
+          },
+			  {
+            "id": "located_content",
+            "type": "textarea",
+        	"label": "located content",
+        	"default": "This would be copy talking about where the headquarters are located <br> and where the quilts are manufactured in Lincoln's State Penn."
+          },
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Banner Title",
+            "default": "Frequently asked questions"
+          },
+          {
+            "id": "faqtag",
+            "type": "textarea",
+            "label": "FAQ Tag Line",
+            "default": "Don’t see an answer to your question here? Contact US"
+          }
+	],
+	"blocks": [
+      {
+        "type": "how_Work",
+        "name": "How Work",
+        "settings": [
+		  {
+            "id": "how_work_img",
+            "type": "image_picker",
+        	"label": "Features Image"
+          },
+		  {
+            "id": "how_work_title",
+            "type": "text",
+        	"label": "How Work Title",
+        	"default": "1 COLLECT YOUR FAVE SHIRTS"
+          },
+		  {
+            "id": "how_work_tag",
+            "type": "textarea",
+        	"label": "How Work Tag Line",
+        	"default": "Select the T-shirts (front, back , or both) you want to use for your quilt, customize your T-shirt quilt , and checkout"
+          },
+		  {
+            "id": "how_work_btn",
+            "type": "text",
+        	"label": "How Work Button Label",
+        	"default": "LEARN MORE"
+          },
+		  {
+            "id": "how_work_link",
+            "type": "url",
+        	"label": "How Work Button Link"
+          }
+        ]
+      },
+      {
+        "type": "repeat",
+        "name": "Slider",
+        "settings": [
+		   {
+            "id": "question",
+            "type": "text",
+        	"label": "question Title",
+        	"default": "This is a dropdown for a frequently asked question ?"
+          },
+		  {
+            "id": "ans",
+            "type": "textarea",
+        	"label": " ans Line",
+        	"default": "This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question "
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+.home_sec_five {
+  height: 50vw;
+}
+
+.rellax {
+  height: 75vw;
+}
+
+.rellax img {
+  object-fit: cover;
+}
+{% endstylesheet %}
+
+{% javascript %}
+  var rellax = new Rellax('.rellax');
+{% endjavascript %}
+
+{{ 'https://unpkg.com/rellax@1.9.1/rellax.js' | script_tag }}

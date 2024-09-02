@@ -1,0 +1,57 @@
+<div class="mobilemenu">   
+  <div class="toplmenu1"><a class="menu_icn"><img loading="lazy" src="{{ 'cross.png' | asset_url }}" alt="close icon"/></a></div>
+  <ul>            
+    {% assign s = 1 %}
+    {% for link in linklists.mobile-menu-new.links %}                        
+    {% assign child_list_handle = link.title | handleize %}
+    {% if linklists[child_list_handle].links != blank %}
+      {% if link.title != 'Log in' %}
+    <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %} active" aria-haspopup="true">
+      <p>{{ link.title }}</p>
+      {% if link.title != 'Contact Us' %}
+      <ul class="sndn snd{{ s }} active">
+        {% for childlink in link.links %}
+          <li class='child-link-title'><a href="{{childlink.url}}">{{childlink.title}}</a></li>
+          <ul class="grand-child-links">
+          {% for grandchildlink in childlink.links %}
+            <li class='grand-child-link'><a href="{{grandchildlink.url}}">{{grandchildlink.title}}</a></li>
+          {% endfor %}
+          </ul>
+        {% endfor %}
+        <a class='shop-all-mobile' href='/collections'>Shop All</a>
+      </ul>
+      {% endif %}
+    </li>
+    {% endif %}
+    {% else %}
+    <li {% if link.active %}class="site-nav--active"{% endif %} class='menu-link-base'>
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    </li>
+    {% endif %}
+    {% capture s %}{{ s | plus:1 }}{% endcapture %}
+    {% endfor %}	
+
+    {% if linklists[section.settings.header_linklist_two].links.size > 0 %}      
+    {% for link in linklists[section.settings.header_linklist_two].links %}
+    <li>
+      <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+    </li>
+    {% endfor %}
+    {% endif %}
+
+    {% if shop.customer_accounts_enabled %}
+   
+    {% if customer %}
+    <li class="lower-mobile-link"><a href="/account">My Account</a></li>
+    <li class="lower-mobile-link"><a href="/account">My Orders</a></li>
+    <li class="lower-mobile-link"><a href="/account/logout">Log Out</a></li>
+    {% else %}
+    {% for link in linklists.upper-header.links %}
+          <li class='lower-mobile-link'>
+            <a href="{{link.url}}">{{link.title}}</a>
+          </li>
+        {% endfor %}
+    {% endif %}
+    {% endif %}
+  </ul>
+</div>

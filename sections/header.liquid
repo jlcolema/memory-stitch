@@ -1,0 +1,372 @@
+{% include 'mobile-nav' %}
+
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+  <header>
+    <div class='upper-menu'>
+      <ul class='upper-menu-nav'>
+        {% for link in linklists.upper-header.links %}
+          <li class='upper-menu-link'>
+            <a href="{{link.url}}">{{link.title}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% if section.settings.message %}
+      {% if section.settings.home_page_only == false or template.name == 'index' %}
+        <style>
+          .announcement-bar {
+            background-color: {{ section.settings.color_bg }};
+          }
+          .announcement-bar--link:hover {
+            {% assign brightness = section.settings.color_bg | color_brightness %}
+
+            {% if brightness <= 192 %}
+              {% assign lightenAmount = 255 | minus: brightness | divided_by: 255 | times: 16 %}
+              background-color: {{ section.settings.color_bg | color_lighten: lightenAmount }};
+            {% else %}
+              {% assign darkenAmount = 255 | divided_by: brightness | times: 8 %}
+              background-color: {{ section.settings.color_bg | color_darken: darkenAmount }};
+            {% endif %}
+          }
+          .announcement-bar__message {
+            color: {{ section.settings.color_text }};
+          }
+        </style>
+
+        {% if section.settings.message_link == blank %}
+          <div class="announcement-bar main_top pv4">
+        {% else %}
+          <a href="{{ section.settings.message_link }}" class="announcement-bar announcement-bar--link">
+        {% endif %}
+          <h4 class="announcement-bar__message mw-100">{{ section.settings.message_text }}</h4>
+        {% if section.settings.message_link == blank %}
+          </div>
+        {% else %}
+          </a>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+    <div class="container-fluid">
+    <div class="banner--clone main_logo_menu {% if template != 'index' %}innerhead{% endif %}">
+      <div class="home-menu_container">
+        <div class="home-menu_logo">
+          <div class="toplmenu hidden-lg visible-xs">
+            <a class="menu_div"><img src="{{ 'menu.png' | asset_url }}" alt="Menu icon"/></a>
+          </div>
+          <div class="home_logo">
+            {% if section.settings.logo %}
+            {%- assign img_url = section.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <a href="/" itemprop="url" class="db mw6">
+              {% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
+              {{ section.settings.logo | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: logo_alt }}
+              <noscript>
+                {% capture image_size %}{{ section.settings.logo_max_width | escape }}x{% endcapture %}
+                  <img src="{{ section.settings.logo | img_url: image_size }}"
+                     srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                     alt="{{ section.settings.logo.alt | default: shop.name }}"
+                     itemprop="logo"
+                     style="max-width: {{ section.settings.logo_max_width }}px;">
+              </noscript>
+            </a>
+            {% endif %}
+          </div>
+          <div class="bagup visible-xs">
+            <div class="bag">
+              <a href="/cart">
+                <img title="Cart icon" src="{{ 'Cart.png' | asset_url }}" alt="Cart Icon" />
+                <span id="CartCount">
+{%- include 'bold-options-hybrid-cart-item-count' with cart -%}
+{{- bold_options_hybrid_item_count -}}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="main-menu_container">
+          <div class="main_menu">
+            <div class="inner_menu">
+              {% include 'site-nav' %}
+            </div>
+            <div class="bag">
+              <a href="/cart">
+                <img title="Cart icon" src="{{ 'Cart.png' | asset_url }}" alt="Cart Icon" />
+                <span id="CartCount">
+{%- include 'bold-options-hybrid-cart-item-count' with cart -%}
+{{- bold_options_hybrid_item_count -}}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    </div>
+  </header>
+</div>
+
+<script type="application/ld+json" async>
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append:'x' %}
+    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+  {% endif %}
+  "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_pinterest_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_tumblr_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "{{ settings.social_vimeo_link }}"
+  ],
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>
+
+{% if template.name == 'index' %}
+  <script type="application/ld+json" async>
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": {
+    "de": "Titel",
+    "en": "Header",
+    "es": "Encabezado",
+    "fr": "En-tête",
+    "it": "Header",
+    "ja": "????",
+    "pt-BR": "Cabeçalho"
+  },
+  "settings": [
+
+    {
+      "type": "radio",
+      "id": "align_logo",
+      "label": {
+        "de": "Logo-Ausrichtung",
+        "en": "Logo alignment",
+        "es": "Alineación de logotipo",
+        "fr": "Alignement du logo",
+        "it": "Allineamento logo",
+        "ja": "?????????",
+        "pt-BR": "Alinhamento do logotipo"
+      },
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "de": "Links",
+            "en": "Left",
+            "es": "Izquierda",
+            "fr": "Gauche",
+            "it": "Sinistra",
+            "ja": "?",
+            "pt-BR": "Esquerda"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "de": "Mittig",
+            "en": "Centered",
+            "es": "Centrada",
+            "fr": "Centré",
+            "it": "Centrato",
+            "ja": "????",
+            "pt-BR": "Centralizado"
+          }
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": {
+        "de": "Logo-Foto",
+        "en": "Logo image",
+        "es": "Logotipo",
+        "fr": "Image du logo",
+        "it": "Immagine del logo",
+        "ja": "????",
+        "pt-BR": "Imagem do logotipo"
+      }
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "label": {
+        "de": "Logobreite",
+        "en": "Custom logo width",
+        "es": "Ancho del logotipo personalizado",
+        "fr": "Largeur personnalisée du logo",
+        "it": "Larghezza logo personalizzato",
+        "ja": "???????????",
+        "pt-BR": "Largura do logotipo personalizado"
+      },
+      "min": 50,
+      "max": 250,
+      "step": 5,
+      "unit": {
+        "de": "px",
+        "en": "px",
+        "es": "px",
+        "fr": "px",
+        "it": "px",
+        "ja": "px",
+        "pt-BR": "px"
+      },
+      "default": 100
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": {
+        "de": "Menü",
+        "en": "Menu",
+        "es": "Menú",
+        "fr": "Menu",
+        "it": "Menu",
+        "ja": "????",
+        "pt-BR": "Menu"
+      },
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Ankündigungsbereich",
+        "en": "Announcement bar",
+        "es": "Barra de anuncios",
+        "fr": "Barre d'annonces",
+        "it": "Barra degli annunci",
+        "ja": "????",
+        "pt-BR": "Barra de anúncios"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "message",
+      "label": {
+        "de": "Ankündigung anzeigen",
+        "en": "Show announcement",
+        "es": "Mostrar anuncio",
+        "fr": "Afficher l'annonce",
+        "it": "Mostra annuncio",
+        "ja": "???????",
+        "pt-BR": "Exibir anúncio"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "home_page_only",
+      "label": {
+        "de": "Nur Startseite",
+        "en": "Home page only",
+        "es": "Solo página de inicio",
+        "fr": "Page d'accueil uniquement",
+        "it": "Solo home page",
+        "ja": "????????",
+        "pt-BR": "Apenas página inicial"
+      },
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "message_text",
+      "label": {
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "????",
+        "pt-BR": "Texto"
+      },
+      "default": {
+        "de": "Hier etwas ankündigen",
+        "en": "Announce something here",
+        "es": "Anuncia algo aquí",
+        "fr": "Annoncez quelque chose ici",
+        "it": "Annuncia qualcosa qui",
+        "ja": "???????????",
+        "pt-BR": "Anuncie algo aqui"
+      }
+    },
+    {
+      "type": "url",
+      "id": "message_link",
+      "label": {
+        "de": "Link",
+        "en": "Link",
+        "es": "Enlace",
+        "fr": "Lien",
+        "it": "Link",
+        "ja": "???",
+        "pt-BR": "Link"
+      },
+      "info": {
+        "de": "Optional",
+        "en": "Optional",
+        "es": "Opcional",
+        "fr": "Facultatif",
+        "it": "Facoltativo",
+        "ja": "?????",
+        "pt-BR": "Opcional"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "de": "Zeile",
+        "en": "Bar",
+        "es": "Barra",
+        "fr": "Barre",
+        "it": "Barra",
+        "ja": "??",
+        "pt-BR": "Barra"
+      },
+      "default": "#7796a8"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": {
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "????",
+        "pt-BR": "Texto"
+      },
+      "default": "#fff"
+    },
+    {
+      "id": "top_offers",
+      "type": "text",
+      "label": "Top Offier",
+      "default": "Shop announcement banner with a link or CODE. Details. |  Call 1-855-792-4205 or open a chat for questions"
+    }
+  ]
+}
+{% endschema %}

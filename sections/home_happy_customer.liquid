@@ -1,0 +1,73 @@
+<section class="home_sec_nine">
+  <div class="happy_customers_main">
+    <h2 class="tc mb6 base">{{ section.settings.title }}</h2><br />
+    <div class="brand_slider brand_slider_sec">
+      <ul class="brand_slider_main happy_customera_main">
+        {% for block in section.blocks %}
+        <li>{{ block.settings.img | image_url: width: 600 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'image' }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <h3 class="fs5 dark-text">{{ section.settings.tag }}</h3>
+    <a href="{{ section.settings.link }}" class="btn">{{ section.settings.btn }}</a>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": " Home Happy Customer",
+    "settings": [
+				 {
+            "id": "title",
+            "type": "text",
+        	"label": "Main Title",
+        	"default": "- PHOTOS FROM HAPPY CUSTOMERS- "
+          },
+		  {
+            "id": "tag",
+            "type": "textarea",
+        	"label": "Buttom Tag Line",
+        	"default": "Ready to transform your <br> t-shirts into the perfect gift?"
+          },
+		  {
+            "id": "btn",
+            "type": "text",
+        	"label": "Button Label",
+        	"default": "CREATE YOURS TODAY"
+          },
+		  {
+            "id": "link",
+            "type": "url",
+        	"label": "Button Link",
+        	"default": "/collections/all"
+          }
+		],
+	"blocks": [
+      {
+        "type": "repeat",
+        "name": "Slider",
+        "settings": [
+
+		  {
+            "id": "img",
+            "type": "image_picker",
+        	"label": "Slider Image"
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": " Home Happy Customer",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

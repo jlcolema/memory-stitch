@@ -1,0 +1,129 @@
+<section class="home_sec_one">
+  <h1 class="sr-only">Custom T-Shirt Quilt and Blankets by MemoryStitch, Thanks</h1>
+  <div class="home_banner">
+    {{ section.settings.banner_img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: '', title: '', style: 'min-height: 55vw;object-fit: cover;' }}
+    <div class="home_banner_inner tc">
+      <h1 class="center dib pa3 mb3">{{ section.settings.title }}</h1>
+      <div class="dg items-center justify-center mw7 center">
+        <div class="creating">
+          <a href="{{ section.settings.link }}" class="btn"> {{ section.settings.btn }}</a>
+        </div>
+        <div class="creating creating_one dn">
+          <a class="btn2" data-toggle="modal" data-target="#videoModal" data-theVideo="//www.youtube.com/embed/{{ section.settings.link_two }}">
+            <i class="fas fa-play"></i>{{ section.settings.btn_two }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Start Play Video-->
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div>
+          <iframe style="padding:10px; background:#FFF" width="100%" height="400" src=""></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Play Video-->
+
+<script async>
+  autoPlayYouTubeModal();
+  function autoPlayYouTubeModal() {
+    var trigger = $("body").find('[data-toggle="modal"]');
+    trigger.click(function () {
+      //$('.snow').show();
+      var theModal = $(this).data("target"),
+      videoSRC = $(this).attr("data-theVideo"),
+      videoSRCauto = videoSRC + "?autoplay=1";
+      $(theModal + ' iframe').attr('src', videoSRCauto);
+      $(theModal + ' button.close').click(function () {
+        //$('.snow').hide();
+        $(theModal + ' iframe').attr('src', videoSRC);
+      });
+      $('.modal').click(function () {
+        $(theModal + ' iframe').attr('src', videoSRC);
+      });
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Home banner",
+  "settings": [
+  {
+    "id": "banner_img",
+    "type": "image_picker",
+    "label": "Banner background Image"
+  },
+  {
+    "id": "title",
+    "type": "text",
+    "label": "Banner Title",
+    "default": "Let us help you <br> tell your story"
+  },
+
+  {
+    "id": "btn",
+    "type": "text",
+    "label": "Button Label",
+    "default": "START CREATING"
+  },
+  {
+    "id": "link",
+    "type": "url",
+    "label": "Button Link"
+  },
+  {
+    "id": "btn_two",
+    "type": "text",
+    "label": "Button Label",
+    "default": " Watch our story"
+  },
+  {
+    "id": "link_two",
+    "type": "text",
+    "label": "Video ID"
+  }
+  ],
+  "presets": [
+  {
+    "name": "Home Banner",
+    "category": "Custom"
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+@media (max-width: 700px) {
+  .home_banner::after {
+    content: "";
+    display: block;
+    background: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .home_banner_inner {
+    z-index: 1;
+    top: calc(50% - 1rem);
+  }
+}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

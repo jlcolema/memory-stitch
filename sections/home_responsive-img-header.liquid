@@ -1,0 +1,51 @@
+<section class="home_responsive-img-header">
+  <h2>
+    {% if section.settings.link != blank %}<a href="{{ section.settings.link }}">{% endif %}
+      <picture>
+        <source srcset="{{ section.settings.img_desktop | img_url: 'master' }}" media="(min-width: 600px)">
+        {{ section.settings.img_mobile | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: section.settings.img_alt-text }}
+      </picture>
+    {% if section.settings.link != blank %}</a>{% endif %} 
+  </h2>
+  <style>.home_responsive-img-header img { width: 100%;max-width: 100%; }</style>
+</section>
+
+{% schema %}
+  {
+    "name": "Responsive Image Header",
+    "settings": [
+      {
+        "id": "img_desktop",
+        "type": "image_picker",
+        "label": "Desktop Image"          
+      },
+      {
+        "id": "img_mobile",
+        "type": "image_picker",
+        "label": "Mobile Image"          
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Image Header Link"
+      },
+      {
+        "id": "img_alt-text",
+        "type": "text",
+        "label": "Image Alt Text"          
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home Responsive Image Header",
+        "category": "Custom"        
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

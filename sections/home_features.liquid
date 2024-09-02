@@ -1,0 +1,101 @@
+<section class="hone_sec_two">
+  <div class="container">
+    <div class="how_work">
+      <h2 class="dark-text text-center fs3 fw7 mb3">{{ section.settings.title }}</h2>
+      <h3 class="fs4 text-center base mb5">{{ section.settings.tag }}</h3>
+      
+      <div class="dg">
+        {% for block in section.blocks %}
+          <div class="your_story">
+            <div class="ypur_story_img mb5">
+              {{ block.settings.img | image_url: width: 600 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'icon', class: 'h-100 w-auto' }}
+            </div>
+            <h3 class="fs4">{{ block.settings.title }}</h3>
+            <p>{{ block.settings.tag }}</p>
+            <a href="{{ block.settings.link }}" class="btn-secondary">{{ block.settings.btn }}</a>
+            <p>&nbsp;</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Features",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Features Main Title",
+      "default": "HOW IT WORKS"
+    },
+    {
+      "id": "tag",
+      "type": "textarea",
+      "label": "Features Main Tag Line",
+      "default": "Helping you tell your story"
+    }
+  ],
+  "blocks": [
+  {
+    "type": "repeat",
+    "name": "Slider",
+    "settings": [
+      {
+        "id": "img",
+        "type": "image_picker",
+        "label": "Features Image"
+      },
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Features Title",
+        "default": "1 COLLECT YOUR FAVE SHIRTS"
+      },
+      {
+        "id": "tag",
+        "type": "textarea",
+        "label": "Features Tag Line",
+        "default": "Select the T-shirts (front, back , or both) you want to use for your quilt, customize your T-shirt quilt , and checkout"
+      },
+      {
+        "id": "btn",
+        "type": "text",
+        "label": "Button Label",
+        "default": "LEARN MORE"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Button Link"
+      }
+    ]
+  }
+  ],
+  "presets": [
+  {
+    "name": "Home Features",
+    "category": "Custom"
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .how_work .dg {
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    .how_work .dg {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1rem 6rem;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

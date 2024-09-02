@@ -1,0 +1,122 @@
+<section class="home_sec_three css-grid items-stretch">
+  <div class="free_space hidden-xs">
+    <div class="testimonial_img testimonial_img1 h-100">
+      {{ section.settings.img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Woman in sweater', style: 'object-fit: cover;height: 100%;' }}
+    </div>
+  </div>
+  <div class="free_space">
+    <div class="testimonial_content testimonial_content1 h-100" style="background-color:{{ section.settings.color }}  ">
+      <div class="testimonial_content_inner pa4">
+        <h2 class="mb4 base fs3 text-center">{{ section.settings.title }}</h2>
+        <p>{{ section.settings.tag }}</p>
+        <a href="{{ section.settings.link }}" class="btn color_change">{{ section.settings.btn }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="free_space visible-xs">
+    <div class="testimonial_img testimonial_img1 h-100">
+      {{ section.settings.img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Cutting a quilt', style: 'object-fit: cover;height: 100%;' }}
+    </div>
+  </div>
+  <div class="free_space">
+    <div class="testimonial_content testimonial_content2 h-100" style="background-color:{{ section.settings.color_two }} ">
+      <div class="testimonial_content_inner pa4 testimonial_content_inner_font ">
+        <h2 class="mb4 fs3 text-center">{{ section.settings.title_two }}</h2>
+        <p>{{ section.settings.tag_two }}</p>
+        <a href="{{ section.settings.link_two }}" class="btn">{{ section.settings.btn_two }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="free_space">
+    <div class="testimonial_img testimonial_img2 h-100">
+      {{ section.settings.img_two | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Quilt photo', style: 'object-fit: cover;height: 100%;' }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home Testimonial",
+    "settings": [
+
+           {
+			"id": "img",
+            "type": "image_picker",
+        	"label": "Features Image"
+          },
+		  {
+            "id": "title",
+            "type": "text",
+        	"label": "Testimonial Title",
+        	"default": "- COSTOMER TESTIMONIAL -"
+          },
+		  {
+            "id": "tag",
+            "type": "textarea",
+        	"label": "Testimonial Tag Line",
+        	"default": "This is a short testimonial quote with an image of the person who said it to the left"
+          },
+		  {
+            "id": "btn",
+            "type": "text",
+        	"label": "Button Label",
+        	"default": "READ MORE"
+          },
+		  {
+            "id": "link",
+            "type": "url",
+        	"label": "Button Link"
+          },
+			 {
+            "id": "color",
+            "type": "color",
+        	"label": "color code"
+          },
+			{
+            "id": "img_two",
+            "type": "image_picker",
+        	"label": "Features Image"
+          },
+		  {
+            "id": "title_two",
+            "type": "text",
+        	"label": "Testimonial Title_two",
+        	"default": "- HOW TO PREP -"
+          },
+		  {
+            "id": "tag_two",
+            "type": "textarea",
+        	"label": "Testimonial Tag Line_two",
+        	"default": "Value sell headline about instructions and what it takes to prepare the clothing"
+          },
+		  {
+            "id": "btn_two",
+            "type": "text",
+        	"label": "Button Label",
+        	"default": "READ MORE"
+          },
+		  {
+            "id": "link_two",
+            "type": "url",
+        	"label": "Button Link"
+          },
+			 {
+            "id": "color_two",
+            "type": "color",
+        	"label": "color code"
+          }
+	],
+    "presets": [
+      {
+        "name": "Home Testimonial",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

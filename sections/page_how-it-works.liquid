@@ -1,0 +1,276 @@
+<section class="section-1">
+  <div class="we_are">
+    <h1>{{ section.settings.page_title }}</h1>
+  </div>
+</section>
+
+<section class="section-2">
+  <div class="we_are">
+    <h2>{{ section.settings.page_subtitle }}</h2>
+  </div>
+  <div class="container-flex cf2 cf-40-60">
+    <div class="item"><img src="{{ section.settings.step_1_img  | img_url: 'grande' }}" alt="Step 1 icon" /></div>
+    <div class="item">
+      <div class="item-title">
+        <span class="item-numeral"><img src="{{ section.settings.step_1_img_numeral | img_url: 'large' }}" alt="1"></span>
+        <h3 class="item-text"><strong>{{ section.settings.step_1_title }}</strong></h3>
+      </div>
+      <div class="item-description">
+        {{ section.settings.step_1_detail }}
+      </div>
+    </div>
+  </div>
+  <div class="container-flex cf2 cf-40-60">
+    <div class="item"><img src="{{ section.settings.step_2_img  | img_url: 'grande' }}" alt="Step 2 icon" /></div>
+    <div class="item">
+      <div class="item-title">
+        <span class="item-numeral"><img src="{{ section.settings.step_2_img_numeral | img_url: 'large' }}" alt="2"></span>
+        <h3 class="item-text"><strong>{{ section.settings.step_2_title }}</strong></h3>
+      </div>
+      <div class="item-description">
+        {{ section.settings.step_2_detail }}
+      </div>
+    </div>
+  </div>
+  <div class="container-flex cf2 cf-40-60">
+    <div class="item"><img src="{{ section.settings.step_3_img  | img_url: 'grande' }}" alt="Step 3 icon" /></div>
+    <div class="item">
+      <div class="item-title">
+        <span class="item-numeral"><img src="{{ section.settings.step_3_img_numeral | img_url: 'large' }}" alt="3"></span>
+        <h3 class="item-text"><strong>{{ section.settings.step_3_title }}</strong></h3>
+      </div>
+      <div class="item-description">
+        {{ section.settings.step_3_detail }}
+      </div>
+    </div>
+  </div>
+  <div class="button-container"><a href="{{ section.settings.link_1 }}" class="btn">{{ section.settings.link_label_1 }}</a></div>
+</section>
+
+<section class="section-2">
+  <div class="we_are">
+    <img src="{{ section.settings.teamphoto_img | img_url: '2048x2048' }}" alt="Memory Stitch Team" />
+  </div>
+  <div class="we_are">
+    <h2>{{ section.settings.page_endtagline }}</h2>
+    <div class="button-container"><a href="{{ section.settings.link_2 }}" class="btn btn-green">{{ section.settings.link_label_2 }}</a></div>
+  </div>
+</section>
+
+<style>
+  h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+    color: #293D47;
+    text-transform: unset;
+    letter-spacing: 0;
+  }
+  h1 {
+    font-size: 5rem;
+    color: #26B0C7;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  .we_are p,
+  .container-flex p {
+    margin-left: auto;
+    margin-right: auto;
+    color: #666;
+}
+  .container-flex p {
+    margin: 1rem auto;
+  }
+  .button-container {
+    text-align: center;
+  }
+  body a.btn {
+    margin: 3rem auto;
+    padding: 12px 29px;
+    background: #263842;
+    border: 2px solid #263842;
+    border-radius: 30px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  body a.btn.btn-green {
+    background: #45ad45;
+    border: 2px solid #45ad45;
+  }
+  body a.btn:hover {
+    background: none;
+    border: 2px solid #263842;
+    color: #263842;
+  }
+  body a.btn.btn-green:hover {
+    background: none;
+    border: 2px solid #45ad45;
+    color: #45ad45;
+  }
+.section-1 p {
+  max-width: 690px;
+}
+
+.container-flex {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 690px;
+  margin: 0 auto;
+}
+.container-flex div.item {
+  flex: 0 0 auto;
+  padding: 20px;
+}
+.container-flex.cf2 .item {
+  flex: 1 0 auto;
+  width: 50%;
+  min-width:200px;
+}
+.container-flex.cf2.cf-40-60 .item:nth-child(odd) {
+  width: 40%;
+  text-align: center;
+}
+  .container-flex.cf2.cf-40-60 .item:nth-child(even) {
+  width: 60%;
+}
+.item-title {
+  box-sizing: border-box;
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+.item-title > span {
+  flex: 0 0 auto;
+  align-self: center;
+}
+.item-title .item-numeral {
+  width: 60px;
+  padding-right: 8px;
+  border-right: solid 2px #000;
+}
+.item-title .item-text {
+  padding-left: 15px;
+  text-transform: uppercase;
+}
+/***OBX SEO Edit***/
+h3.item-text {
+    flex: 0 0 auto;
+    align-self: center;
+    font-size: 14px;
+    text-align: left;
+    line-height:  1.42857143;
+}
+@media only screen and (max-width: 749px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.4rem;
+  }
+  .container-flex.cf2.cf-40-60 .item:nth-child(odd) img {
+    width: 60%;
+  }
+}
+</style>
+
+{% schema %}
+
+{
+    "name": "How It Works Page",
+    "settings": [
+        {
+            "id": "page_title",
+            "type": "text",
+            "label": "Page Title",
+            "default": "How It Works"
+        }, {
+            "id": "page_subtitle",
+            "type": "text",
+            "label": "Page Subtitle",
+            "default": "Transforming your individual T-shirts into a&nbsp;quilt full of memories is as&nbsp;easy&nbsp;as&nbsp;1-2-3."
+        }, {
+            "id": "step_1_img",
+            "type": "image_picker",
+            "label": "Step 1 Image"
+        }, {
+            "id": "step_1_img_numeral",
+            "type": "image_picker",
+            "label": "Step 1 Numeral Image"
+        }, {
+            "id": "step_1_title",
+            "type": "text",
+            "label": "Step 1 Title",
+            "default": "Which memories will you <br>choose to cherish forever?"
+        }, {
+            "id": "step_1_detail",
+            "type": "textarea",
+            "label": "Step 1 Detail"
+        }, {
+            "id": "step_2_img",
+            "type": "image_picker",
+            "label": "Step 2 Image"
+        }, {
+            "id": "step_2_img_numeral",
+            "type": "image_picker",
+            "label": "Step 2 Numeral Image"
+        }, {
+            "id": "step_2_title",
+            "type": "text",
+            "label": "Step 2 Title",
+            "default": "To cut or have us cut? <br>That’s the only question."
+        }, {
+            "id": "step_2_detail",
+            "type": "textarea",
+            "label": "Step 2 Detail"
+        }, {
+            "id": "step_3_img",
+            "type": "image_picker",
+            "label": "Step 3 Image"
+        }, {
+            "id": "step_3_img_numeral",
+            "type": "image_picker",
+            "label": "Step 3 Numeral Image"
+        }, {
+            "id": "step_3_title",
+            "type": "text",
+            "label": "Step 3 Title",
+            "default": "A lifetime of memories is <br>now the memory of a lifetime."
+        }, {
+            "id": "step_3_detail",
+            "type": "textarea",
+            "label": "Step 3 Detail"
+        }, {
+            "id": "teamphoto_img",
+            "type": "image_picker",
+            "label": "Team Photo"
+        }, {
+            "id": "page_endtagline",
+            "type": "text",
+            "label": "Page End Tagline",
+            "default": "Ready to transform your <br>T-shirts into the perfect gift?"
+        }, {
+            "id": "link_label_1",
+            "type": "text",
+            "label": "Link 1 Label",
+            "default": "Create a New Memory Today"
+        }, {
+            "id": "link_1",
+            "type": "url",
+            "label": "Link 1"
+        }, {
+            "id": "link_label_2",
+            "type": "text",
+            "label": "Link 2 Label",
+            "default": "Create Yours Today"
+        }, {
+            "id": "link_2",
+            "type": "url",
+            "label": "Link 2"
+        }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}{% endstylesheet %}
+
+{% javascript %}{% endjavascript %}

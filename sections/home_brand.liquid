@@ -1,0 +1,48 @@
+<section class="home_sec_six">
+  <div class="brand_slider" role="listbox" title="Brand slider">
+    <ul class="brand_slider_main">
+      {% for block in section.blocks %}
+      {% if block.settings.link != blank %}<a target="_blank" href="{{ block.settings.link }}">{% endif %}
+      <li class="brand_li" title="Brand Logo">{{ block.settings.img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Brand logo' }}</li>
+      {% if block.settings.link != blank %}</a>{% endif %}
+      {% endfor %}
+    </ul>	 
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home Brand",
+    "settings": [],
+	"blocks": [
+      {
+        "type": "repeat",
+        "name": "Slider",
+        "settings": [	 
+		  {
+            "id": "img",
+            "type": "image_picker",
+        	"label": "Features Image"
+          },	 
+		  {
+            "id": "link",
+            "type": "url",
+        	"label": "Features Image Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home Brand",
+        "category": "Custom"        
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

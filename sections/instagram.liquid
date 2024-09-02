@@ -1,0 +1,45 @@
+<section class="home_sec_nine">
+    <div class="happy_customers_main">
+        <h2 class="tc mb6">{{ section.settings.title }}</h2><br />
+        <div id="insta-feed"></div>
+        <h3 class="text-center dark-text mt6">{{ section.settings.tag }}</h3>
+        <a href="{{ section.settings.link }}" class="btn">{{ section.settings.btn }}</a>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Instagram Feed",
+    "settings": [
+        {
+            "id": "title",
+            "type": "text",
+            "label": "Main Title",
+            "default": "- PHOTOS FROM HAPPY CUSTOMERS -"
+        }, {
+            "id": "tag",
+            "type": "textarea",
+            "label": "Buttom Tag Line",
+            "default": "Ready to transform your <br> t-shirts into the perfect gift?"
+        }, {
+            "id": "btn",
+            "type": "text",
+            "label": "Button Label",
+            "default": "CREATE YOURS TODAY"
+        }, {
+            "id": "link",
+            "type": "url",
+            "label": "Button Link",
+            "default": "/collections/all"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Instagram Feed",
+            "category": "Responsive"
+        }
+    ]
+}
+{% endschema %}
+{% stylesheet %}{% endstylesheet %}
+{% javascript %}{% endjavascript %}

@@ -1,0 +1,17 @@
+<div class="{{ grid_image_width }}">
+  <div class="product_collection">
+    <div class="product_collection_img">
+      <a href="{{ product.url }}">
+        {{ product.featured_image.src | image_url: width: 600 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'Quilt Image' }}
+      </a>
+    </div>
+    <div class="dg mt5">
+      <h3 class="fs2 text-center base"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+      <h4>Starting at <strong>{{ product.price | money }}</strong></h4>
+      <!--
+      <h4><a href="{{ product.url }}">{{ product.title }}</a></h4>
+      <h5 style="font-size: 2.5rem">Starting at <strong>{{ product.price | money }}</strong></h5>
+       -->
+    </div>
+  </div>
+</div>

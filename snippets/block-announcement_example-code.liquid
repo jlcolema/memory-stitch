@@ -1,0 +1,107 @@
+<!-- 2021 Double Offer Banner - BEGIN -->
+<div class="container-doubleoffer">
+  <div class="subcontainer-do">
+	<div class="item do-1">
+	  <strong>Free Shipping</strong> <span>On All Orders</span>
+	</div>
+	<div class="do-plus">+</div>
+	<div class="item do-2">
+	  <strong>25% Off All Quilts</strong> <span>Code: QUILTS25</span>
+	</div>
+  </div>
+</div>
+
+<style>
+body.template-index #shopify-section-1593103849209 { 
+  margin-top: 0; 
+  padding-top: 0;
+}
+.container-doubleoffer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgba(45,61,70,1);
+  background: linear-gradient(90deg, 
+	  rgba(45,61,70,1) 0%, 
+	  rgba(45,61,70,1) 50%, 
+	  rgba(84,174,195,1) 50%, 
+	  rgba(84,174,195,1) 100%);
+  font-family: "Gotham Rounded", sans-serif;
+  color: #FFF;
+}
+.subcontainer-do {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+}
+.subcontainer-do .do-1 {
+  width: 48%;
+  background: rgba(45,61,70,1);
+}
+.subcontainer-do .do-2 {
+  width: 48%;
+  background: rgba(84,174,195,1);
+}
+.subcontainer-do .item {
+  flex: 1 0 auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 23px;
+  line-height: 130%;
+  padding: 15px 2px;
+  text-transform: uppercase;
+}
+.subcontainer-do .do-plus {
+    font-size: 24px;
+	line-height: 100%;
+	font-weight: bold;
+	text-align: center;
+}
+.subcontainer-do .item strong,
+.subcontainer-do .item span {
+  display: inline-block;
+}
+.subcontainer-do .item strong {
+  font-weight: bold;
+}
+.subcontainer-do .item span {
+  font-weight: 300;
+}
+  
+@media screen and (max-width:900px) {
+  .subcontainer-do .item strong,
+  .subcontainer-do .item span {
+    display: block;
+  }
+}
+
+
+@media screen and (max-width:500px) {
+  .subcontainer-do {
+	  display: block;
+	  background: none;
+  }
+  .subcontainer-do .do-1,
+  .subcontainer-do .do-2 {
+	  width: 100%;
+	}
+  .subcontainer-do .do-1 {
+	  padding-bottom: 5px;
+	}
+  .subcontainer-do .do-2 {
+	  padding-top: 5px;
+	}
+	.subcontainer-do .do-plus {
+		background: linear-gradient(180deg, 
+			rgba(45,61,70,1) 0%, 
+			rgba(45,61,70,1) 50%, 
+			rgba(84,174,195,1) 50%, 
+			rgba(84,174,195,1) 100%);
+	}
+}
+</style>
+<!-- 2021 Double Offer Banner - END -->

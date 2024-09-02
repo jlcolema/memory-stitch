@@ -1,0 +1,1179 @@
+{%- include 'bold-product' with product, hide_action: 'break', output: 'none' -%}
+{{ 'swatch.css' | asset_url | stylesheet_tag }}
+
+<div class="product-template__container" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}"
+     data-section-type="product" data-enable-history-state="true">
+  {% comment %}
+  Get first variant, or deep linked one
+  {% endcomment %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign product_image_zoom_size = '1024x1024' -%}
+  {%- assign product_image_scale = '2' -%}
+  {%- assign enable_zoom = section.settings.enable_zoom -%}
+  {%- assign compare_at_price = current_variant.compare_at_price -%}
+  {%- assign price = current_variant.price -%}
+
+  {% case section.settings.image_size %}
+    {% when 'small' %}
+      {%- assign product_image_width = 'medium-up--one-third' -%}
+      {%- assign product_description_width = 'medium-up--two-thirds' -%}
+      {%- assign product_thumbnail_width = 'medium-up--one-third' -%}
+      {%- assign height = 345 -%}
+    {% when 'medium' %}
+      {%- assign product_image_width = 'medium-up--one-half' -%}
+      {%- assign product_description_width = 'medium-up--one-half' -%}
+      {%- assign product_thumbnail_width = 'medium-up--one-quarter' -%}
+      {%- assign height = 530 -%}
+    {% when 'large' %}
+      {%- assign product_image_width = 'medium-up--two-thirds' -%}
+      {%- assign product_description_width = 'medium-up--one-third' -%}
+      {%- assign product_thumbnail_width = 'medium-up--one-fifth' -%}
+      {%- assign height = 720 -%}
+    {% when 'full' %}
+      {%- assign product_image_width = '' -%}
+      {%- assign product_description_width = '' -%}
+      {%- assign product_thumbnail_width = 'medium-up--one-eighth' -%}
+      {%- assign height = 1090 -%}
+      {%- assign enable_zoom = false -%}
+  {% endcase %}
+
+  <section class="home_sec_four">
+    <div class="top_seller top_seller_pdp">
+      <h1>{{ product.title }}</h1>
+      <h2>{{ section.settings.subtitle }}</h2>
+
+
+      <div class="clearfix"></div>
+      <div class="product_main product_main_product">
+        <div class="dg-l">
+          <div style="max-width: 58rem;">
+            <div class="home_product_img home_product_img_pdp pimg">
+              <div
+                class="grid__item product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
+                {%- assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image -%}
+                {% for image in product.images %}
+                  {% capture img_id %}FeaturedImage-{{ section.id }}-{{ image.id }}
+                  {% endcapture %}
+                  {% capture img_class %}product-featured-img
+                  {% endcapture %}
+                  {% capture zoom_img_id %}FeaturedImageZoom-{{ section.id }}-{{ image.id }}
+                  {% endcapture %}
+                  {% capture img_wrapper_id %}
+                    {{ zoom_img_id }}-wrapper
+                  {% endcapture %}
+                  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+                  {% include 'image-style' with small_style: true, width: height, height: height, wrapper_id: img_wrapper_id, img_id: img_id %}
+
+                  <div id="{{ img_wrapper_id }}" class="product-single__photo-wrapper js">
+                    <div id="{{ zoom_img_id }}"
+                         style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"
+                         class="product-single__photo{% if enable_zoom %} js-zoom-enabled{% endif %}{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}{% unless featured_image == image %} hide{% endunless %}"
+                         data-image-id="{{ image.id }}" {% if enable_zoom %} data-zoom="{{ image | img_url: product_image_zoom_size, scale: product_image_scale }}" {% endif %}>
+                      {% capture imgClasses %}
+                        'feature-row__image {{ img_class }}'
+                      {% endcapture %}
+                      {{ image | image_url: width: 2048 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: image.alt, class: imgClasses, id: img_id, tabindex: '-1', itemprop: 'image' }}
+                    </div>
+                  </div>
+                {% endfor %}
+
+                <noscript>
+                  {% capture product_image_size %}
+                    {{ height }}x
+                  {% endcapture %}
+                  <img loading="lazy"
+                       src="{{ featured_image | img_url: product_image_size, scale: product_image_scale }}"
+                       alt="{{ featured_image.alt }}" id="FeaturedImage-{{ section.id }}" class="product-featured-img"
+                       style="max-width: {{ height }}px;">
+                </noscript>
+
+                {% if product.images.size > 1 %}
+                  {% if product.images.size > 3 %}
+                    {%- assign enable_thumbnail_slides = true -%}
+                  {% endif %}
+
+                  <div
+                    class="thumbnails-wrapper{% if enable_thumbnail_slides == true %} thumbnails-slider--active{% endif %}">
+                    {% if enable_thumbnail_slides == true %}
+                      <button
+                        class="btn btn--link thumbnails-slider__btn thumbnails-slider__prev thumbnails-slider__prev--{{ section.id }}"
+                        type="button">
+                        {% include 'icon-chevron-left' %}
+                        <span class="icon__fallback-text">{{ 'sections.slideshow.previous_slide' | t }}</span>
+                      </button>
+                    {% endif %}
+                    <ul
+                      class="grid grid--uniform product-single__thumbnails product-single__thumbnails-{{ section.id }}">
+                      {% for image in product.images %}
+                        <li class="grid__item {{ product_thumbnail_width }} product-single__thumbnails-item js"
+                            title="{{ image.alt }}">
+                          <a href="{{ image.src | img_url: product_image_zoom_size, scale: product_image_scale }}"
+                             class="text-link product-single__thumbnail product-single__thumbnail--{{ section.id }}"
+                             data-thumbnail-id="{{ image.id }}" {% if enable_zoom %} data-zoom="{{ image.src | img_url: product_image_zoom_size, scale: product_image_scale }}" {% endif %}>
+                            {% assign imgAlt = 'sections.featured_product.gallery_thumbnail_alt' | t: imageAlt: image.alt | escape %}
+                            {{ image.src | image_url: width: 110 | image_tag: loading: 'lazy', alt: imgAlt, class: 'product-single__thumbnail-image' }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                    {% if enable_thumbnail_slides == true %}
+                      <button
+                        class="btn btn--link thumbnails-slider__btn thumbnails-slider__next thumbnails-slider__next--{{ section.id }}"
+                        type="button">
+                        {% include 'icon-chevron-right' %}
+                        <span class="icon__fallback-text">{{ 'sections.slideshow.next_slide' | t }}</span>
+                      </button>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div>
+            {% if product.title contains 'Gift Card' or product.title contains 'E-gift Card' %}
+              <script>let multipleProjectToggle = false;</script>
+              <div>
+                {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+                  <div class="product__policies rte">
+                    {%- if shop.taxes_included -%}
+                      {{ 'products.product.include_taxes' | t }}
+                    {%- endif -%}
+                    {%- if shop.shipping_policy.body != blank -%}
+                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+
+                {% if section.settings.show_quantity_selector %}
+                  <div class="form-message form-message--error product__quantity-error hide"
+                       id="error-quantity-{{ section.id }}" tabindex="-1">
+                    {% include 'icon-error' %}
+                    {{ 'products.product.quantity_minimum_message' | t }}
+                  </div>
+                {% endif %}
+
+                {% capture "form_classes" -%}
+                  product-form product-form-{{ section.id }}
+                  {% unless section.settings.show_variant_labels %}
+                    product-form--hide-variant-labels
+                  {% endunless %}
+                  {% if section.settings.enable_payment_button and product.has_only_default_variant %}
+                    product-form--payment-button-no-variants
+                  {% endif %}
+                {%- endcapture %}
+
+                {% form 'product', product, class: form_classes, novalidate: 'novalidate' %}
+                {% comment %}
+                  Automatically inserted by Shop Pay Installments theme updater
+                {% endcomment %}
+                {% unless settings.disable_autogenerated_payment_terms %}
+                  {{ form | payment_terms }}
+                {% endunless %}
+
+                <div class="home_product_content">
+                  <div class="home_product_price">
+
+                    <label></label>
+                    <h4>{% include 'product-price', variant: current_variant %}</h4>
+
+                    <!-- PayPal Credit - Message START -->
+                    <div
+                      data-pp-message
+                      data-pp-placement="product"
+                      data-pp-amount="500"
+                      data-pp-style-layout="text"
+                      data-pp-style-logo-type="primary"
+                      data-pp-style-logo-position="top"
+                    ></div>
+                    <!-- PayPal Credit - Message END -->
+
+                    {% unless product.has_only_default_variant %}
+                      {% for option in product.options_with_values %}
+                        <div id="selector-wrapper-{{ forloop.index0 }}"
+                             class="selector-wrapper js product-form__item">
+                          <label {% if option.name == 'default' %} class="label--hidden" {% endif %}
+                            for="SingleOptionSelector-{{ forloop.index0 }}">
+                            {{ option.name }}
+                          </label>
+                          <select
+                            class="single-option-selector single-option-selector-{{ section.id }} product-form__input"
+                            data-index="option{{ forloop.index }}"
+                            id="SingleOptionSelector-{{ forloop.index0 }}">
+                            {% for value in option.values %}
+                              <option
+                                value="{{ value | escape }}" {% if option.selected_value == value %} selected="selected" {% endif %}>{{ value }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      {% endfor %}
+                    {% endunless %}
+
+
+                    <select class="product-form__variants no-js" id="ProductSelect-{{ section.id }}"
+                            name="id">
+                      {% for variant in product.variants %}
+                        {% if variant.available %}
+                          <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                            value="{{ variant.id }}">
+                            {{ variant.title }}
+                          </option>
+                        {% else %}
+                          <option disabled="disabled">{{ variant.title }}
+                            -
+                            {{ 'products.product.sold_out' | t }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+
+                    <div class="swatch-container">
+
+                      {% assign checkcolor = false %}
+                      {% for option in product.options_with_values %}
+                        {% if option.name contains 'Color' or option.name contains 'COLOR' or option.name contains 'color' %}
+                          {% assign checkcolor = true %}
+                          {% assign checkname = option.name %}
+                        {% endif %}
+                      {% endfor %}
+
+                      {% if product.available and product.variants.size > 1 %}
+                        {% if checkcolor == true %}
+                          <label>{{ checkname }}</label>
+                          {% include 'swatch' with checkname %}
+                        {% endif %}
+                      {% endif %}
+
+                    </div>
+
+                    <div class="checkbox-area">
+
+                      <div class="bold_options" data-product-id="{{ section.id }}"></div>
+                    </div>
+
+                    {% if section.settings.show_quantity_selector %}
+                      <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+                      <select class="quantity" id="Quantity-{{ section.id }}" name="quantity">
+                        {% for i in (1..10) %}
+                          <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                      </select>
+                    {% endif %}
+                  </div>
+
+                  <div class="home_product_btn" style="max-width: 40rem;">
+                    <div class="dg">
+                      <div class="product_btn">
+                        <button type="submit" name="add"
+                                id="AddToCart-{{ section.id }}" {% unless current_variant.available %} disabled="disabled" {% endunless %}
+                                class="addtocart btn product-form__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                                                <span id="AddToCartText-{{ section.id }}">
+                                                    {% unless current_variant.available %}
+                                                      {{ 'products.product.sold_out' | t }}
+                                                    {% else %}
+                                                      {{ 'products.product.add_to_cart' | t }}
+                                                    {% endunless %}
+                                                </span>
+                        </button>
+                      </div>
+
+                      <!--                                       <div><h6 class="tc mv3">- OR -</h6></div> -->
+
+                      {% if section.settings.enable_payment_button %}
+                        <div class="product_btn">
+                          {{ form | payment_button }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% endform %}
+
+                  {%- comment -%}
+                  Live region for announcing updated price and availability to screen readers
+                  {%- endcomment -%}
+                  <p aria-live="polite" class="visually-hidden" data-product-status role="status"></p>
+                </div>
+
+                {%- comment -%}
+                      {% if section.settings.show_share_buttons %}
+                        {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+                    {% endif %}
+                    {%- endcomment -%}
+
+                <div class="product_review product_review_right">
+                  <h4>DETAILS</h4>
+
+                  {{ product.description }}
+
+                  {%- comment -%}
+
+                    <h4>PAYMENT OPTIONS</h4>
+                    <h3>
+                        <i class="fas fa-lock"></i>Secure options</h3>
+                    <img loading="lazy" src="{{ 'payment-option.png' | asset_url }}" alt="Payment options" />
+                    <h4>SHIPPING AND RETURNS</h4>
+                    <p>Your order will ship back to you within 7-10 business days of shirt receipt, except for peak seasons. <br /><br />Please read our <a href="/pages/shipping">shipping</a> and <a href="/pages/returns">return policy</a>.</p>
+
+                  {%- endcomment -%}
+
+                </div>
+              </div>
+            {% else %}
+              <script>let multipleProjectToggle = true;</script>
+              {{ 'custom-product-styles.css' | asset_url | stylesheet_tag }}
+              <div id="component-template" style="display:none;">
+                <div class="PUT_THIS_IN_LOOP">
+                  {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+                    <div class="product__policies rte">
+                      {%- if shop.taxes_included -%}
+                        {{ 'products.product.include_taxes' | t }}
+                      {%- endif -%}
+                      {%- if shop.shipping_policy.body != blank -%}
+                        {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+
+                  {% if section.settings.show_quantity_selector %}
+                    <div class="form-message form-message--error product__quantity-error hide"
+                         id="error-quantity-{{ section.id }}" tabindex="-1">
+                      {% include 'icon-error' %}
+                      {{ 'products.product.quantity_minimum_message' | t }}
+                    </div>
+                  {% endif %}
+
+                  {% capture "form_classes" -%}
+                    product-form product-form-{{ section.id }}
+                    {% unless section.settings.show_variant_labels %}
+                      product-form--hide-variant-labels
+                    {% endunless %}
+                    {% if section.settings.enable_payment_button and product.has_only_default_variant %}
+                      product-form--payment-button-no-variants
+                    {% endif %}
+                  {%- endcapture %}
+
+                  {% form 'product', product, class: form_classes, novalidate: 'novalidate' %}
+                  {% comment %}
+                    Automatically inserted by Shop Pay Installments theme updater
+                  {% endcomment %}
+                  {% unless settings.disable_autogenerated_payment_terms %}
+                    {{ form | payment_terms }}
+                  {% endunless %}
+
+                  <div class="home_product_content">
+                    <div class="home_product_price">
+
+                      <label></label>
+                      <h4>{% include 'product-price', variant: current_variant %}</h4>
+
+                      <!-- PayPal Credit - Message START -->
+                      <div
+                        data-pp-message
+                        data-pp-placement="product"
+                        data-pp-amount="500"
+                        data-pp-style-layout="text"
+                        data-pp-style-logo-type="primary"
+                        data-pp-style-logo-position="top"
+                      ></div>
+                      <!-- PayPal Credit - Message END -->
+
+                      <div class="project-name-wrapper">
+                        <div
+                          style="display:flex;align-items:center;width:100%;margin-top:30px;position:relative;">
+                          <label for="project-name-input" style="display:flex;">
+                            Name Your Project
+                            <div class="name-input-tooltip-wrapper"
+                                 style="margin-left: 4px;margin-top: -5px;">
+                              <svg xmlns="http://www.w3.org/2000/svg"
+                                   xmlns:xlink="http://www.w3.org/1999/xlink"
+                                   width="14px" height="14px" viewBox="0 0 14 14" version="1.1">
+                                <title>Question Mark</title>
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                   fill-rule="evenodd">
+                                  <g id="M-Update"
+                                     transform="translate(-161.000000, -959.000000)">
+                                    <g id="Question-Mark"
+                                       transform="translate(161.000000, 958.000000)">
+                                      <circle id="Oval" fill="#26AFC7" cx="7" cy="8"
+                                              r="7"/>
+                                      <text id="?"
+                                            font-family="OpenSans-Extrabold, Open Sans"
+                                            font-size="11"
+                                            font-weight="700"
+                                            fill="#FFFFFF">
+                                        <tspan x="4.44628906" y="12">?</tspan>
+                                      </text>
+                                    </g>
+                                  </g>
+                                </g>
+                              </svg>
+                              <div class="tooltip-text"
+                                   style="display: none; position: absolute; background-color: white; padding: 8px; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px; z-index: 1;font-size:14px;padding:10px;color:#000;font-weight:300;bottom:30px;">
+                                When selecting a name for your project we recommend something
+                                memorable in the event
+                                there
+                                are questions about it later, often it is best to associate the
+                                name of the person the
+                                quilt
+                                is for in the project name. (ex. Justin's Quilt)
+                              </div>
+                            </div>
+                          </label>
+                        </div>
+                        <input type="text" id="project-name-input" name="project_name"
+                               class="project-name-input"
+                               value="My New Project">
+                      </div>
+                      <div class="overlay"
+                           style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+                      <div class="tooltip-modal"
+                           style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000;width:75%;">
+                        <div class="modal-content">
+                          When selecting a name for your project we recommend something memorable in
+                          the event there are
+                          questions about it later, often it is best to associate the name of the
+                          person the quilt is
+                          for in the project name. (ex. Justin's Quilt)
+                        </div>
+                      </div>
+
+                      {% unless product.has_only_default_variant %}
+                        {% for option in product.options_with_values %}
+                          <div id="selector-wrapper-{{ forloop.index0 }}"
+                               class="selector-wrapper js product-form__item">
+                            <label {% if option.name == 'default' %} class="label--hidden" {% endif %}
+                              for="SingleOptionSelector-{{ forloop.index0 }}">
+                              {{ option.name }}
+                            </label>
+                            <select
+                              class="single-option-selector single-option-selector-{{ section.id }} product-form__input"
+                              data-index="option{{ forloop.index }}"
+                              id="SingleOptionSelector-{{ forloop.index0 }}"
+                              data-option-name="{{ option.name }}"
+                            >
+                              {% for value in option.values %}
+                                <option
+                                  value="{{ value | escape }}" {% if option.selected_value == value %} selected="selected" {% endif %}>{{ value }}</option>
+                              {% endfor %}
+                            </select>
+                          </div>
+                        {% endfor %}
+                      {% endunless %}
+
+
+                      <select class="product-form__variants no-js" id="ProductSelect-{{ section.id }}"
+                              name="id">
+                        {% for variant in product.variants %}
+                          {% if variant.available %}
+                            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                              value="{{ variant.id }}">
+                              {{ variant.title }}
+                            </option>
+                          {% else %}
+                            <option disabled="disabled">{{ variant.title }}
+                              -
+                              {{ 'products.product.sold_out' | t }}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+
+                      <div class="swatch-container">
+
+                        {% assign checkcolor = false %}
+                        {% for option in product.options_with_values %}
+                          {% if option.name contains 'Color' or option.name contains 'COLOR' or option.name contains 'color' %}
+                            {% assign checkcolor = true %}
+                            {% assign checkname = option.name %}
+                          {% endif %}
+                        {% endfor %}
+
+                        {% if product.available and product.variants.size > 1 %}
+                          {% if checkcolor == true %}
+                            <label>{{ checkname }}</label>
+                            {% include 'swatch' with checkname %}
+                          {% endif %}
+                        {% endif %}
+
+                      </div>
+
+                      <div class="custom-check-container" style="display: flex; flex-direction: column;">
+                        <label style="margin-bottom: 2px;display:flex;" class="hidden">
+                          <input type="checkbox" name="cut_tshirts" value=""
+                                 style="margin: 0 6px 0 0;">
+                          <div style="font-size:16px;font-weight:400;color:#525252">
+                            Let us cut your t-shirts
+                          </div>
+                        </label>
+                        <a class="tshirt-more-info" href="https://memorystitch.com/pages/faq#faq-cutshirts" target="_blank"
+                           style="font-size:12px;font-style:italic;margin-left:20px;">
+                          Click for more details
+                        </a>
+                        <label style="margin-bottom: 2px;display:flex;" class="hidden">
+                          <input type="checkbox" name="embroidered_message" value=""
+                                 style="margin: 0 6px 0 0;">
+                          <div style="font-size:16px;font-weight:400;color:#525252">
+                            Add an embroidered message
+                          </div>
+                        </label>
+                        <a class="embroider-more-info" href="https://memorystitch.com/pages/faq#faq-embroideredmessage"
+                           target="_blank"
+                           style="font-size:12px;font-style:italic;margin-left:20px;">
+                          Click for more details
+                        </a>
+                        <label class="hidden" style="display:flex;">
+                          <input type="checkbox" name="rush_production" value=""
+                                 style="margin: 0 6px 0 0;">
+                          <div style="font-size:16px;font-weight:400;color:#525252">Rush Production
+                          </div>
+                        </label>
+                        <div class="rush-more-info" style="font-size:12px;font-style:italic;margin-left:20px;">
+                          Move your order to the front of the line
+                        </div>
+                      </div>
+                      <div class="checkbox-area">
+                        <div class="bold_options" data-product-id="{{ section.id }}"></div>
+                      </div>
+                      <div style="display:none">
+                        {% if section.settings.show_quantity_selector %}
+                          <label
+                            for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+                          <select class="quantity" id="Quantity-{{ section.id }}" name="quantity">
+                            {% for i in (1..10) %}
+                              <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                          </select>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="home_product_btn" style="max-width: 40rem;display:none;">
+                      <div class="dg">
+                        <div class="product_btn">
+                          <button type="submit" name="add"
+                                  id="AddToCart-{{ section.id }}" {% unless current_variant.available %} disabled="disabled" {% endunless %}
+                                  class="addtocart btn product-form__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                                                <span id="AddToCartText-{{ section.id }}">
+                                                    {% unless current_variant.available %}
+                                                      {{ 'products.product.sold_out' | t }}
+                                                    {% else %}
+                                                      {{ 'products.product.add_to_cart' | t }}
+                                                    {% endunless %}
+                                                </span>
+                          </button>
+                        </div>
+
+                        <!--                                       <div><h6 class="tc mv3">- OR -</h6></div> -->
+
+                        {% if section.settings.enable_payment_button %}
+                          <div class="product_btn">
+                            {{ form | payment_button }}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                    {% endform %}
+
+                    {%- comment -%}
+                    Live region for announcing updated price and availability to screen readers
+                    {%- endcomment -%}
+                    <p aria-live="polite" class="visually-hidden" data-product-status role="status"></p>
+                  </div>
+
+                  {%- comment -%}
+                        {% if section.settings.show_share_buttons %}
+                          {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+                      {% endif %}
+                      {%- endcomment -%}
+                </div>
+                <div class="add-component-btn">
+                  <div style="display:flex;align-items: center;margin-right:20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         width="43px"
+                         height="43px" viewBox="0 0 43 43" version="1.1">
+                      <title>Group 5</title>
+                      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="M-Update" transform="translate(-39.000000, -1679.000000)"
+                           stroke="#26AFC7"
+                           stroke-width="2">
+                          <g id="Group-5" transform="translate(39.000000, 1679.000000)">
+                            <circle id="Oval" cx="21.5" cy="21.5" r="20.5"/>
+                            <line x1="21.5" y1="13" x2="21.5" y2="30" id="Path-2"/>
+                            <line x1="30" y1="21.5" x2="13" y2="21.5" id="Path-2"/>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                  <div style="display:flex;flex-direction: column;justify-content:center;">
+                    <div
+                      style="font-size:16px;font-weight: 700;text-align: left;color: #2D3D45;font-family:'Gotham Rounded',serif;">
+                      Add Another Project
+                    </div>
+                    <div style="font-size:13px;color: #2D3D45;text-align:left;">
+                      Need additional quilts? Add them to the same order!
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="components-container"></div>
+              <div class="shipping-value custom">
+                <div class="shipping-content" style="display: flex;justify-content: flex-start;align-items: center;">
+                  <div class="shipping-image" style="margin-right:4px;width:25px;">
+                    <img
+                      src="https://storage.googleapis.com/images.trinity.one/TekBrands/Memory%20Stitch%20/MEM-PDP-ShippingProductionAdd-V1-Oct2022/local_shipping_black_24dp%201%20(2).png"
+                      alt="">
+                  </div>
+                  <div class="shipping-text" style="font-weight: 700;">
+                    <p>Typically ships within 3-4 weeks</p>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-start;">
+                <div id="AddToCart-All">
+                  <span id="AddToCartText-All">
+                      Add To Cart
+                  </span>
+                </div>
+                <div class="custom-subtotal-field"></div>
+              </div>
+              <div class="product_review product_review_right">
+                <h4>DETAILS</h4>
+
+                {{ product.description }}
+
+                {%- comment -%}
+
+                  <h4>PAYMENT OPTIONS</h4>
+                  <h3>
+                      <i class="fas fa-lock"></i>Secure options</h3>
+                  <img loading="lazy" src="{{ 'payment-option.png' | asset_url }}" alt="Payment options" />
+                  <h4>SHIPPING AND RETURNS</h4>
+                  <p>Your order will ship back to you within 7-10 business days of shirt receipt, except for peak seasons. <br /><br />Please read our <a href="/pages/shipping">shipping</a> and <a href="/pages/returns">return policy</a>.</p>
+
+                {%- endcomment -%}
+
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home_sec_nine">
+    <div class="happy_customers_main happy_customers_main_pdp">
+      <h4 class="tc mb1">{{ section.settings.happy_customery_title }}</h4>
+      <div class="mb2" id="insta-feed"></div>
+      <div id="looxReviews" data-product-id="{{ product.id }}"
+           class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+    </div>
+  </section>
+
+
+  <div class="section_how-it-works">
+    <section class="section-inner_how-it-works">
+      <div class="container">
+        <div class="how_work">
+          <h2 class="dark-text text-center fs3 fw7 mb3">How It Works</h2>
+
+          <div class="dg">
+
+            <div class="your_story">
+              <div class="ypur_story_img mb5">
+                <img loading="lazy"
+                     src="https://cdn.shopify.com/s/files/1/0072/0319/2898/files/MemoryStitch_icons_Collect-Your-Favorite-Shirts_900px.png?v=18261795736124958165"
+                     class="h-100 w-auto" alt="icon">
+              </div>
+              <h3 class="fs4">1. Pick Your T-shirts</h3>
+              <p>Select the T-shirts for your quilt, customize your quilt settings and checkout.</p>
+            </div>
+
+            <div class="your_story">
+              <div class="ypur_story_img mb5">
+                <img loading="lazy"
+                     src="//cdn.shopify.com/s/files/1/0072/0319/2898/files/MemoryStitch_icons_Cut-and-Send-Shirts-To-MemoryStitch_900px.png?v=6505610213743026756"
+                     class="h-100 w-auto" alt="icon">
+              </div>
+              <h3 class="fs4">2. Ship Your T-shirts</h3>
+              <p>After checkout, use our instructions to prepare and ship your T-shirts. </p>
+            </div>
+
+            <div class="your_story">
+              <div class="ypur_story_img mb5">
+                <img loading="lazy"
+                     src="//cdn.shopify.com/s/files/1/0072/0319/2898/files/MemoryStitch_icons_We-Send-Your-T-shirt-Quilt_900px.png?v=9943356458171836135"
+                     class="h-100 w-auto" alt="icon">
+              </div>
+              <h3 class="fs4">3. Get a T-shirt Quilt</h3>
+              <p>Your T-shirts will be stitched together into an awesome quilt and shipped back to you!</p>
+            </div>
+
+          </div>
+          <div class="how-it-works-cta"><a href="/pages/how-it-works" class="btn-secondary">Learn More</a></div>
+          <!--<p class="notes-disclaimer"><small>*Free shipping anywhere in the US.</small></p>-->
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <section class="home_sec_eight">
+    <div class="faq_main">
+      <h4>{{ section.settings.faq_title }}</h4>
+      {% assign s = 1 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'faq' %}
+          <div class="faqs">
+            <div class="faq_heading" id="q{{ s }}" onclick="showds({{ s }})">
+              <h3>{{ block.settings.question }}
+                <span>
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+              </h3>
+              <div class="faq_content" id="tab{{ s }}" style="display: none;">
+                <p>
+                  {{ block.settings.ans }}</p>
+              </div>
+            </div>
+          </div>
+          {% assign s = s | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      <h5 class="mt5">{{ section.settings.faq_tag }}</h5>
+    </div>
+  </section>
+
+
+</div>
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}" async>
+            {{ product | json }}
+
+
+
+  </script>
+{% endunless %}
+
+<script defer="defer">
+  $(function () {
+    $("#write_reviews").click(function () {
+      $('html, body').animate({
+        scrollTop: $("#reviews").offset().top
+      }, 1000);
+    });
+  });
+</script>
+
+{{ 'custom-tooltips.js' | asset_url | script_tag }}
+
+<script>
+  let variantId = `{{ product.selected_or_first_available_variant.id }}`;
+  const cartObjectArray = [];
+  let editComponentNumber;
+  let forcedRemove = false;
+  let regularPrice;
+  let salePrice;
+  let differencePrice;
+</script>
+
+{{ 'new-project-component.js' | asset_url | script_tag }}
+
+{{ 'product-interval.js' | asset_url | script_tag }}
+
+{{ 'add-multiple-to-cart.js' | asset_url | script_tag }}
+
+{{ 'product-radio-click.js' | asset_url | script_tag }}
+
+{% schema %}
+
+{
+"name": {
+"de": "Produktseiten",
+"en": "Product pages",
+"es": "Páginas de productos",
+"fr": "Pages de produits",
+"it": "Pagine di prodotto",
+"ja": "商品ページ",
+"pt-BR": "Páginas de produtos"
+},
+"settings": [
+{
+"type": "text",
+"id": "subtitle",
+"default": "Customize to fit the amount of shirts you want to use",
+"label": {
+"de": "Untertitel",
+"en": "Subtitle",
+"es": "Subtitular",
+"fr": "Sous-titre",
+"it": "Sottotitolo",
+"ja": "字幕",
+"pt-BR": "Subtítulo"
+}
+}, {
+"type": "select",
+"id": "image_size",
+"label": {
+"de": "Foto-Größe",
+"en": "Image size",
+"es": "Tamaño de la imagen",
+"fr": "Taille des images",
+"it": "Dimensione immagine",
+"ja": "画像のサイズ",
+"pt-BR": "Tamanho da imagem"
+},
+"options": [
+{
+"value": "small",
+"label": {
+"de": "Klein",
+"en": "Small",
+"es": "Pequeña",
+"fr": "Petite",
+"it": "Piccolo",
+"ja": "小",
+"pt-BR": "Pequeno"
+}
+}, {
+"value": "medium",
+"label": {
+"de": "Mittel",
+"en": "Medium",
+"es": "Mediana",
+"fr": "Moyenne",
+"it": "Medio",
+"ja": "中",
+"pt-BR": "Médio"
+}
+}, {
+"value": "large",
+"label": {
+"de": "Groß",
+"en": "Large",
+"es": "Grande",
+"fr": "Grande",
+"it": "Grande",
+"ja": "大",
+"pt-BR": "Grande"
+}
+}, {
+"value": "full",
+"label": {
+"de": "Volle Breite",
+"en": "Full-width",
+"es": "Ancho completo",
+"fr": "Pleine largeur",
+"it": "Intera larghezza",
+"ja": "全幅",
+"pt-BR": "Largura completa"
+}
+}
+],
+"default": "medium"
+}, {
+"type": "checkbox",
+"id": "show_quantity_selector",
+"label": {
+"de": "Quantitäts-Auswahl anzeigen",
+"en": "Show quantity selector",
+"es": "Mostrar selector de cantidad",
+"fr": "Afficher le sélecteur de quantité",
+"it": "Mostra selettore quantità",
+"ja": "数量セレクターを表示する",
+"pt-BR": "Exibir seletor de quantidade"
+},
+"default": false
+}, {
+"type": "checkbox",
+"id": "show_variant_labels",
+"label": {
+"de": "Varianten-Etiketten anzeigen",
+"en": "Show variant labels",
+"es": "Mostrar etiquetas de variantes",
+"fr": "Afficher le nom des variantes",
+"it": "Mostra etichette varianti",
+"ja": "バリエーションのラベルを表示する",
+"pt-BR": "Exibir etiquetas de variantes"
+},
+"default": true
+}, {
+"type": "checkbox",
+"id": "show_vendor",
+"label": {
+"de": "Lieferanten anzeigen",
+"en": "Show vendor",
+"es": "Mostrar proveedor",
+"fr": "Afficher les vendeurs",
+"it": "Mostra fornitore",
+"ja": "販売元を表示する",
+"pt-BR": "Exibir fornecedor"
+},
+"default": false
+}, {
+"type": "checkbox",
+"id": "enable_zoom",
+"label": {
+"de": "Foto-Zoom zulassen",
+"en": "Enable image zoom",
+"es": "Habilitar zoom de imagen",
+"fr": "Activer le zoom d'image",
+"it": "Abilita lo zoom dell'immagine",
+"ja": "画像ズームを有効にする",
+"pt-BR": "Ativar o zoom da imagem"
+},
+"default": true
+}, {
+"type": "checkbox",
+"id": "enable_payment_button",
+"label": {
+"de": "Dynamischen Checkout Button anzeigen",
+"en": "Show dynamic checkout button",
+"es": "Mostrar botón de pago dinámico",
+"fr": "Afficher le bouton de passage à la caisse dynamique",
+"it": "Mostra pulsante di check-out dinamico",
+"ja": "ダイナミックチェックアウトボタンを表示する",
+"pt-BR": "Exibir botão dinâmico de finalização da compra"
+},
+"info": {
+"de": "Jeder Kunde sieht seine bevorzugte Zahlungsmethode aus den in Ihrem Shop verfügbaren Zahlungsmethoden wie PayPal oder Apple Pay. [Mehr Infos](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+"en": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+"es": "Cada cliente verá su forma de pago preferida entre las disponibles en tu tienda, como PayPal o Apple Pay. [Más información](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+"fr": "Chaque client verra son moyen de paiement préféré parmi ceux qui sont proposés sur votre boutique, tels que PayPal ou Apple Pay. [En savoir plus](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+"it": "Ogni cliente vedrà il suo metodo di pagamento preferito tra quelli disponibili nel tuo negozio, come PayPal o Apple Pay. [Maggiori informazioni](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+"ja": "PayPalやApple Payなど、ストアで利用可能な希望の決済方法がお客様に表示されます。[もっと詳しく] (https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+"pt-BR": "Cada cliente verá seu método de pagamento preferido dentre os disponíveis na loja, como PayPal ou Apple Pay. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+},
+"default": true
+}, {
+"type": "checkbox",
+"id": "show_share_buttons",
+"label": {
+"de": "Buttons für Social Media anzeigen",
+"en": "Show social sharing buttons",
+"es": "Mostrar botones para compartir en redes sociales",
+"fr": "Affichez les boutons de partage sur les médias sociaux",
+"it": "Mostra i pulsanti per la condivisione sui social",
+"ja": "ソーシャル共有ボタンを表示する",
+"pt-BR": "Exibir botões de compartilhamento em redes sociais"
+},
+"default": true
+}, {
+"id": "happy_customery_title",
+"type": "text",
+"label": "Happy Customery Title",
+"default": "- PHOTOS FROM HAPPY CUSTOMERS- "
+}, {
+"id": "features_title",
+"type": "text",
+"label": "Features Main Title",
+"default": "HOW IT WORKS"
+}, {
+"id": "features_tag",
+"type": "textarea",
+"label": "Features Main Tag Line",
+"default": "Helping you tell your story"
+}, {
+"id": "faq_title",
+"type": "text",
+"label": "Banner Title",
+"default": "The Powerful Men"
+}, {
+"id": "faq_tag",
+"type": "textarea",
+"label": "FAQ Tag Line",
+"default": "Don’t see an answer to your question here? Contact US"
+}
+],
+"blocks": [
+{
+"type": "happy_customer",
+"name": "happy_customer",
+"settings": [
+{
+"id": "happy_customer_img",
+"type": "image_picker",
+"label": "Slider Image"
+}
+]
+}, {
+"type": "features",
+"name": "features",
+"settings": [
+{
+"id": "features_img",
+"type": "image_picker",
+"label": "Features Image"
+}, {
+"id": "features_title",
+"type": "text",
+"label": "Features Title",
+"default": "1 COLLECT YOUR FAVE SHIRTS"
+}, {
+"id": "features_tag",
+"type": "textarea",
+"label": "Features Tag Line",
+"default": "Select the T-shirts (front, back , or both) you want to use for your quilt, customize your T-shirt quilt , and checkout"
+}, {
+"id": "features_btn",
+"type": "text",
+"label": "Button Label",
+"default": "LEARN MORE"
+}, {
+"id": "features_link",
+"type": "url",
+"label": "Button Link"
+}
+]
+}, {
+"type": "faq",
+"name": "faq",
+"settings": [
+{
+"id": "question",
+"type": "text",
+"label": "question Title",
+"default": "This is a dropdown for a frequently asked question ?"
+}, {
+"id": "ans",
+"type": "textarea",
+"label": " ans Line",
+"default": "This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question "
+}
+]
+}
+]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+.product_main .dg-l {
+grid-template-columns: 1fr 1fr;
+grid-gap: 4rem;
+}
+
+{% endstylesheet %}
+
+
+{% if product.metafields.loox.num_reviews %}
+  <script id="looxSchemaJson" type="application/ld+json" async>
+{
+	"@context": "http://schema.org",
+	"@type": "Product",
+	"@id": {{ canonical_url | json }},
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{{ product.metafields.loox.avg_rating }}",
+		"reviewCount": "{{ product.metafields.loox.num_reviews }}"
+	},
+	"name": {{ product.title | json }}
+}
+
+
+
+  </script>
+{% endif %}
+
+<script>
+  function checkVariantId() {
+    if (typeof window.prevVariantId === 'undefined') {
+      window.prevVariantId = null;
+    }
+
+    const url = new URL(window.location.href);
+    const variantId = url.searchParams.get('variant');
+
+
+    if (variantId !== window.prevVariantId) {
+      const variants = [
+        {% for variant in product.variants %}
+        {
+          id: "{{ variant.id }}",
+          regularPriceString: "{{ variant.compare_at_price | money | default: '' }}",
+          salePriceString: "{{ variant.price | money }}"
+        }
+        {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ];
+
+      let regularPriceString = "";
+      let salePriceString = "";
+
+      variants.forEach(variant => {
+        if (variant.id === variantId) {
+          regularPriceString = variant.regularPriceString ? variant.regularPriceString : variant.salePriceString;
+          salePriceString = variant.salePriceString;
+        }
+      });
+
+      window.regularPrice = parseFloat(regularPriceString.trim().replace('$', ''));
+      window.salePrice = parseFloat(salePriceString.trim().replace('$', ''));
+      window.priceDifference = Math.abs(window.regularPrice - window.salePrice).toFixed(2);
+
+      window.prevVariantId = variantId;
+    }
+  }
+
+  function priceUpdater() {
+    if (!window.regularPrice) return;
+
+    let lastContainer = document.querySelectorAll('.custom-check-container')[document.querySelectorAll('.custom-check-container').length - 1];
+
+    if (document.querySelector('.custom-quilt-component.edit-mode')) {
+      let elements = document.getElementsByClassName('component custom-quilt-component');
+
+      for (let i = 0; i < elements.length; i++) {
+        if (elements[i].style.display === 'block') {
+          lastContainer = elements[i];
+          break;
+        }
+      }
+    }
+
+    const checkedInputs = lastContainer.querySelectorAll('input[type="checkbox"]:checked');
+
+    let sum = 0;
+    checkedInputs.forEach(input => {
+      sum += parseFloat(input.value);
+    });
+
+    const regularPriceElements = document.querySelectorAll('.price-item.price-item--regular');
+    const salePriceElements = document.querySelectorAll('.price-item.price-item--sale');
+
+    if (window.regularPrice === window.salePrice) {
+      window.toggleRegular = true;
+      regularPriceElements.forEach(el => {
+        el.textContent = '$' + (window.regularPrice + sum).toFixed(2);
+      });
+    } else {
+      window.toggleRegular = false;
+      regularPriceElements.forEach(el => {
+        el.textContent = '$' + (window.regularPrice + sum).toFixed(2);
+      });
+
+      salePriceElements.forEach(el => {
+        el.textContent = '$' + (window.salePrice + sum).toFixed(2);
+      });
+    }
+  }
+
+  function setParams() {
+    let url = new URL(window.location.href);
+    let urlParams = new URLSearchParams(url.search);
+
+    const paramNames = ['utm_source', 'utm_medium', 'utm_campaign'];
+
+    paramNames.forEach(name => {
+      if (urlParams.has(name) && window[name + '_param'] !== urlParams.get(name)) {
+        window[name + '_param'] = urlParams.get(name);
+      }
+    });
+  }
+
+  setInterval(() => {
+    priceUpdater();
+    checkVariantId();
+    setParams();
+  }, 10);
+</script>

@@ -1,0 +1,44 @@
+<section class="home_sec_five overflow-hidden">
+  <div class="rellax" data-rellax-speed="-3" data-rellax-percentage="0.5">
+    {{ section.settings.img | image_url: width: 1024 | image_tag: widths: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048', loading: 'lazy', alt: 'parallax image' }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Parallax Image",
+  "settings": [
+  {
+    "id": "img",
+    "type": "image_picker",
+    "label": "Single Image"
+  }
+  ],
+  "presets": [
+  {
+    "name": "Parallax Image",
+    "category": "Responsive"
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.home_sec_five {
+  height: 50vw;
+}
+
+.rellax {
+  height: 75vw;
+}
+
+.rellax img {
+  object-fit: cover;
+}
+{% endstylesheet %}
+
+{% javascript %}
+var rellax = new Rellax('.rellax');
+{% endjavascript %}
+
+{{ 'https://unpkg.com/rellax@1.9.1/rellax.js' | script_tag }}

@@ -1,0 +1,51 @@
+<section class="all_sec_one">
+  <div class="breadcrumb_main">
+    <div class="container">
+      {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+      <nav class="breadcrumb_inner" role="navigation" aria-label="breadcrumbs">
+        <ul>
+          <a href="/" title="Home">Home</a>
+          {% if template contains 'page' %}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          <li>{{ page.title }}</li>
+          {% elsif template contains 'product' %}
+          {% if collection.url %}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          {{ collection.title | link_to: collection.url }}
+          {% endif %}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          <li>{{ product.title }}</li>
+          {% elsif template contains 'collection' and collection.handle %}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          {% if current_tags %}
+          {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+          {{ collection.title | link_to: url }}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          <li>{{ current_tags | join: " + " }}</li>
+          {% else %}
+          <li>{{ collection.title }}</li>
+          {% endif %}
+          {% elsif template == 'blog' %}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          {% if current_tags %}
+          {{ blog.title | link_to: blog.url }}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          <li>{{ current_tags | join: " + " }}</li>
+          {% else %}
+          <li>{{ blog.title }}</li>
+          {% endif %}
+          {% elsif template == 'article' %}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          {{ blog.title | link_to: blog.url }}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          <li>{{ article.title }}</li>
+          {% else %}
+          <li aria-hidden="true"><i class="fas fa-chevron-right"></i></li>
+          <li>{{ page_title }}</li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endunless %}
+    </div>
+  </div>
+</section>

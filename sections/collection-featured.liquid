@@ -1,0 +1,532 @@
+{% case section.settings.grid %}
+  {% when 2 %}
+    {%- assign max_height = 530 -%}
+  {% when 3 %}
+    {%- assign max_height = 345 -%}
+  {% when 4 %}
+    {%- assign max_height = 250 -%}
+  {% when 5 %}
+    {%- assign max_height = 195 -%}
+{% endcase %}
+
+{% if section.settings.layout == 'grid' %}
+  {%- assign limit = section.settings.grid | times: section.settings.rows -%}
+{% else %}
+  {%- assign limit = 16 -%}
+{% endif %}
+
+
+{%- assign collection =  collections['homepage-featured-products'] -%}
+
+{% paginate collection.products by limit %}
+
+<div data-section-id="{{ section.id }}" data-section-type="collection-template">
+  
+  
+<style>    
+.collection-template-custom h1 {
+	font-size: 40px;
+	font-weight: 700;
+	text-align: center;
+  	color: #26B0C7;
+}
+.collection-template-custom p.page-description {  
+    width: 100%;
+    max-width: 740px; 
+    margin: 10px auto 40px auto;  
+    font-size: 18px;
+    color: #293d47;
+    font-family: 'Gotham Rounded';
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+}
+  </style>
+
+  <section class="home_sec_eight faq_main_faq_page">
+    <div class="collection-template-custom faq_main faq_main_product ">
+      <h1>Custom T-shirt Quilt Products</h1>
+      <p class="page-description">The perfect gift awaits! Transform&nbsp;their t-shirts into a beloved keepsake today. Choose&nbsp;one of our many custom t-shirt quilt and pillow options to&nbsp;get&nbsp;started.</p>
+
+      <div id="Collection" class="row">
+        {% if section.settings.layout == 'grid' %}
+        <div class="shop_prdct_rgth grid--uniform ajax-product-list customgridview">
+
+          {% case section.settings.grid %}
+          {% when 2 %}
+          {%- assign grid_item_width = 'col-lg-6' -%}
+          {% when 3 %}
+          {%- assign grid_item_width = 'col-lg-4' -%}
+          {% when 4 %}
+          {%- assign grid_item_width = 'col-lg-3' -%}
+          {% endcase %}
+
+          {% assign s = 1 %}
+          {% for product in collection.products %}
+{%- include 'bold-product' with product, hide_action: 'skip' -%}
+
+          {% include 'product-card-grid', grid_image_width: grid_item_width %}
+
+          {% assign ss = s | modulo:2 %}
+          {% assign sss = s | modulo:3 %}
+
+          {% if section.settings.grid == 4 %}
+          {% assign ssss = s | modulo:4 %}
+          {% elsif section.settings.grid == 2 %}
+          {% assign ssss = s | modulo:2 %}
+          {% else %}
+          {% assign ssss = s | modulo:3 %}
+          {% endif %}
+
+          {% if sss == 0 %}<div class="clearfix visible-sm visible-md"></div>{% endif %}
+          {% if ssss == 0 %}<div class="clearfix visible-lg"></div>{% endif %}
+
+          {% assign s = s | plus:1 %}
+          {% else %}
+
+          {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+          {% for i in (1..8) %}
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <div class="grid-view-item">
+              <a href="#" class="grid-view-item__link">
+                <div class="grid-view-item__image">
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                <div class="grid-view-item__meta">
+                  <span class="product-price__price">$19.99</span>
+
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          {%- assign is_empty_collection = true -%}
+          {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="customlistview list-view-items col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="clearfix">&nbsp;</div>
+          {% for product in collection.products %}
+{%- include 'bold-product' with product, hide_action: 'skip' -%}
+          {% include 'product-card-list', product: product %}
+          {% else %}
+
+          {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0%}
+          {% for i in (1..4) %}
+          <a href="#" class="list-view-item">
+            <div class="list-view-item__image-column">
+              <div class="list-view-item__image-wrapper">
+                <div class="list-view-item__image">
+                  {%- assign placeholder = 'placeholder-product-' | append: i -%}
+                  {% include placeholder %}
+                </div>
+              </div>
+            </div>
+
+            <div class="list-view-item__title-column">
+              <div class="list-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+            </div>
+
+            <div class="list-view-item__price-column">
+              <span class="product-price__price">$19.99</span>
+            </div>
+          </a>
+          {% endfor %}
+          {% else %}
+          {%- assign is_empty_collection = true -%}
+          {% endif %}
+          {% endfor %}
+        </div>
+
+        {% else %}
+        <div style="display:none" class="shop_prdct_rgth grid--uniform ajax-product-list customgridview">
+
+          {% case section.settings.grid %}
+          {% when 2 %}
+          {%- assign grid_item_width = 'col-lg-6' -%}
+          {% when 3 %}
+          {%- assign grid_item_width = 'col-lg-4' -%}
+          {% when 4 %}
+          {%- assign grid_item_width = 'col-lg-3' -%}
+          {% endcase %}
+
+          {% assign s = 1 %}
+          {% for product in collection.products %}
+{%- include 'bold-product' with product, hide_action: 'skip' -%}
+
+          {% include 'product-card-grid', grid_image_width: grid_item_width %}
+
+          {% assign ss = s | modulo:2 %}
+
+          {% if section.settings.grid == 4 %}
+          {% assign sss = s | modulo:4 %}
+          {% elsif section.settings.grid == 2 %}
+          {% assign sss = s | modulo:2 %}
+          {% else %}
+          {% assign sss = s | modulo:3 %}
+          {% endif %}
+
+          {% if ss == 0 %}<div class="clearfix visible-sm visible-xs"></div>{% endif %}
+          {% if sss == 0 %}<div class="clearfix visible-lg visible-md"></div>{% endif %}
+
+          {% assign s = s | plus:1 %}
+          {% else %}
+
+          {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+          {% for i in (1..8) %}
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <div class="grid-view-item">
+              <a href="#" class="grid-view-item__link">
+                <div class="grid-view-item__image">
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                <div class="grid-view-item__meta">
+                  <span class="product-price__price">$19.99</span>
+
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          {%- assign is_empty_collection = true -%}
+          {% endif %}
+          {% endfor %}
+        </div>
+
+        <div style="display:block" class="customlistview list-view-items col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="clearfix">&nbsp;</div>
+          {% for product in collection.products %}
+{%- include 'bold-product' with product, hide_action: 'skip' -%}
+          {% include 'product-card-list', product: product %}
+          {% else %}
+
+          {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0%}
+          {% for i in (1..4) %}
+          <a href="#" class="list-view-item">
+            <div class="list-view-item__image-column">
+              <div class="list-view-item__image-wrapper">
+                <div class="list-view-item__image">
+                  {%- assign placeholder = 'placeholder-product-' | append: i -%}
+                  {% include placeholder %}
+                </div>
+              </div>
+            </div>
+
+            <div class="list-view-item__title-column">
+              <div class="list-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+            </div>
+
+            <div class="list-view-item__price-column">
+              <span class="product-price__price">$19.99</span>
+            </div>
+          </a>
+          {% endfor %}
+          {% else %}
+          {%- assign is_empty_collection = true -%}
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if is_empty_collection %}
+        <div class="grid__item small--text-center load-no-match">
+          <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+        {% endif %}
+
+        <div class="grid__item small--text-center load-no-match ajax-no-product-msg" style="display:none;">
+          <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          {% if paginate.pages > 1 %}
+          <div class="clearfix">&nbsp;</div>
+          <div class="pagination">
+            Page: {% include 'pagination' %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% assign dm_paginate_by = paginate.page_size %}{% endpaginate %}
+</div>
+
+
+
+
+{% schema %}
+{
+  "name": {
+    "de": "Kategorie-Seiten",
+    "en": "Collection pages",
+    "es": "Páginas de colección",
+    "fr": "Pages de collections",
+    "it": "Pagine delle collezioni",
+    "ja": "コレクションページ",
+    "pt-BR": "Páginas de coleções"
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "de": "Layout",
+        "en": "Layout",
+        "es": "Diseño",
+        "fr": "Mise en page",
+        "it": "Layout",
+        "ja": "レイアウト",
+        "pt-BR": "Layout"
+      },
+      "default": "grid",
+      "options": [
+        {
+          "value": "grid",
+          "label": {
+            "de": "Raster",
+            "en": "Grid",
+            "es": "Cuadrícula",
+            "fr": "Grille",
+            "it": "Griglia",
+            "ja": "グリッド",
+            "pt-BR": "Grade"
+          }
+        },
+        {
+          "value": "list",
+          "label": {
+            "de": "Liste",
+            "en": "List",
+            "es": "Lista",
+            "fr": "Liste",
+            "it": "Elenco",
+            "ja": "リスト",
+            "pt-BR": "Lista"
+          }
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "grid",
+      "label": {
+        "de": "Produkte per Reihe (nur Raster)",
+        "en": "Products per row (grid only)",
+        "es": "Productos por fila (solo cuadrícula)",
+        "fr": "Produits par rangée (grille uniquement)",
+        "it": "Prodotti per riga (solo griglia)",
+        "ja": "行あたりの商品数（グリッドのみ）",
+        "pt-BR": "Produtos por linha (somente grade)"
+      },
+      "default": 4,
+      "min": 2,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": {
+        "de": "Reihen per Seite (nur Raster)",
+        "en": "Rows per page (grid only)",
+        "es": "Filas por página (solo cuadrícula)",
+        "fr": "Rangées par page (grille uniquement)",
+        "it": "Righe per pagina (solo griglia)",
+        "ja": "ページあたりの行数（グリッドのみ）",
+        "pt-BR": "Linhas por página (somente grade)"
+      },
+      "default": 2,
+      "min": 2,
+      "max": 8,
+      "step": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "label": {
+        "de": "Kategorie-Foto anzeigen",
+        "en": "Show collection image",
+        "es": "Mostrar imagen de la colección",
+        "fr": "Afficher l'image de la collection",
+        "it": "Mostra immagine collezione",
+        "ja": "コレクションの画像を表示する",
+        "pt-BR": "Exibir imagem da coleção"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": {
+        "de": "Produkt-Lieferanten anzeigen",
+        "en": "Show product vendors",
+        "es": "Mostrar proveedores del producto",
+        "fr": "Afficher les vendeurs",
+        "it": "Mostra fornitori prodotto",
+        "ja": "商品の販売元を表示する",
+        "pt-BR": "Exibir fornecedores do produto"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_enable",
+      "label": {
+        "de": "Sortieren erlauben",
+        "en": "Enable sorting",
+        "es": "Habilitar la función ordenar",
+        "fr": "Activer le tri",
+        "it": "Permetti di ordinare",
+        "ja": "並べ替えを有効にする",
+        "pt-BR": "Ativar classificação"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "tags_enable",
+      "label": {
+        "de": "Tag-Filtern erlauben",
+        "en": "Enable tag filtering",
+        "es": "Habilitar filtro de etiquetas",
+        "fr": "Activer le filtrage par balises",
+        "it": "Attiva filtro tag",
+        "ja": "タグでの絞り込みを有効にする",
+        "pt-BR": "Ativar filtragem de tags"
+      },
+      "default": true
+    },
+    {
+      "id": "collection_happy",
+      "type": "image_picker",
+      "label": "Collection Happy Image"
+    },
+    {
+      "id": "how_work_title",
+      "type": "text",
+      "label": "Features Main Title",
+      "default": "HOW IT WORKS"
+    },
+    {
+      "id": "how_work_tag",
+      "type": "textarea",
+      "label": "Features Main Tag Line",
+      "default": "Helping you tell your story"
+    },
+    {
+      "id": "faq_title",
+      "type": "text",
+      "label": "Banner Title",
+      "default": "The Powerful Men"
+    },
+    {
+      "id": "faq_tag",
+      "type": "textarea",
+      "label": "FAQ Tag Line",
+      "default": "Don’t see an answer to your question here? Contact US"
+    }
+  ],
+	"blocks": [
+      {
+        "type": "how_Work",
+        "name": "How Work",
+        "settings": [
+		  {
+            "id": "how_work_img",
+            "type": "image_picker",
+        	"label": "Features Image"
+          },
+		  {
+            "id": "how_work_title",
+            "type": "text",
+        	"label": "How Work Title",
+        	"default": "1 COLLECT YOUR FAVE SHIRTS"
+          },
+		  {
+            "id": "how_work_tag",
+            "type": "textarea",
+        	"label": "How Work Tag Line",
+        	"default": "Select the T-shirts (front, back , or both) you want to use for your quilt, customize your T-shirt quilt , and checkout"
+          },
+		  {
+            "id": "how_work_btn",
+            "type": "text",
+        	"label": "How Work Button Label",
+        	"default": "LEARN MORE"
+          },
+		  {
+            "id": "how_work_link",
+            "type": "url",
+        	"label": "How Work Button Link"
+          }
+        ]
+      },
+      {
+        "type": "collection_faq",
+        "name": "Collection Faq",
+        "settings": [
+		   {
+            "id": "question",
+            "type": "text",
+        	"label": "question Title",
+        	"default": "This is a dropdown for a frequently asked question ?"
+          },
+		  {
+            "id": "ans",
+            "type": "textarea",
+        	"label": " ans Line",
+        	"default": "This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question  This is a dropdown for a frequently asked question "
+          }
+        ]
+      }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .home_sec_five {
+    height: 50vw;
+  }
+
+  .rellax {
+    height: 75vw;
+  }
+
+  .rellax img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .how_work .dg {
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    .how_work .dg {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1rem 6rem;
+    }
+  }
+
+  .product_collection .dg {
+    grid-template-columns: auto;
+    grid-gap: 1rem;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  var rellax = new Rellax('.rellax');
+{% endjavascript %}
+
+{{ 'https://unpkg.com/rellax@1.9.1/rellax.js' | script_tag }}

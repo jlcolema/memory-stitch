@@ -1,0 +1,387 @@
+{%- assign social_icons = false -%}
+{%- assign inline_list = false -%}
+
+{%- if
+  settings.social_twitter_link != blank
+  or settings.social_facebook_link != blank
+  or settings.social_pinterest_link != blank
+  or settings.social_instagram_link != blank
+  or settings.social_tumblr_link != blank
+  or settings.social_snapchat_link != blank
+  or settings.social_youtube_link != blank
+  or settings.social_vimeo_link != blank
+  or template.name == 'article'
+  or template.name == 'blog'
+-%}
+  {%- assign social_icons = true -%}
+{%- endif -%}
+
+<footer>
+  <div class="footer_main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+          <div class="row">
+            <div class="col-lg-3 col-sm-6 col-md-3 col-xs-12">
+              <div class="footer_menu">
+                <span class="fauxh4">Help</span>
+                {% if linklists[section.settings.footer_linklist].links.size > 0 %}
+                <ul>
+                  {% for link in linklists[section.settings.footer_linklist].links %}
+                  <li>
+                    <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-md-3 col-xs-12">
+              <div class="footer_menu">
+                <span class="fauxh4">About</span>
+                {% if linklists[section.settings.footer_linklist_two].links.size > 0 %}
+                <ul>
+                  {% for link in linklists[section.settings.footer_linklist_two].links %}
+                  <li>
+                    <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+                  </li>
+                  {% endfor %}
+                  <li>
+                    <a href="https://cdn.shopify.com/s/files/1/0072/0319/2898/files/MS-Press_Kit.pdf?v=1680198684" aria-describedby="a11y-external-message" rel="nofollow" target="_blank">Press Kit</a>
+                  </li>
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-md-3 col-xs-12">
+              <div class="footer_menu">
+                <span class="fauxh4">Get Involved</span>
+                {% if linklists[section.settings.footer_linklist_three].links.size > 0 %}
+                <ul>
+                  {% for link in linklists[section.settings.footer_linklist_three].links %}
+                  <li>
+                    <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-md-3 col-xs-12">
+              {%- if social_icons -%}
+              <div class="footer_menu">
+                <span class="fauxh4">FOLLOW US</span>
+                <ul>
+                  {%- if settings.social_facebook_link != blank -%}
+                  <li>
+                    <a target="_blank" href="{{ settings.social_facebook_link | escape }}" aria-describedby="a11y-external-message">
+                      <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                  </li>
+                  {%- endif -%}
+                  {%- if settings.social_twitter_link != blank -%}
+                  <li>
+                    <a target="_blank" href="{{ settings.social_twitter_link | escape }}" aria-describedby="a11y-external-message">
+                      <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                  </li>
+                  {%- endif -%}
+                  {%- if settings.social_pinterest_link != blank -%}
+                  <li>
+                    <a target="_blank" href="{{ settings.social_pinterest_link | escape }}" aria-describedby="a11y-external-message">
+                      <i class="fab fa-pinterest-p"></i> Pinterest
+                    </a>
+                  </li>
+                  {%- endif -%}
+                  {%- if settings.social_instagram_link != blank -%}
+                  <li>
+                    <a target="_blank" href="{{ settings.social_instagram_link | escape }}" aria-describedby="a11y-external-message">
+                      <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                  </li>
+                  {%- endif -%}
+                  {%- if settings.social_tumblr_link != blank -%}
+                  <li>
+                    <a target="_blank" href="{{ settings.social_tumblr_link | escape }}" aria-describedby="a11y-external-message">
+                      <i class="fab fa-pinterest-p"></i> Tumblr
+                    </a>
+                  </li>
+                  {%- endif -%}
+                  {%- if settings.social_snapchat_link != blank -%}
+                  <li>
+                    <a target="_blank" href="{{ settings.social_snapchat_link | escape }}" aria-describedby="a11y-external-message">
+                      <i class="fab fa-pinterest-p"></i> Snapchat
+                    </a>
+                  </li>
+                  {%- endif -%}
+                  {%- if settings.social_youtube_link != blank -%}
+                  <li>
+                    <a target="_blank" href="{{ settings.social_youtube_link | escape }}" aria-describedby="a11y-external-message">
+                      <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                  </li>
+                  {%- endif -%}
+                  {%- if settings.social_vimeo_link != blank -%}
+                  <li>
+                    <a target="_blank" href="{{ settings.social_vimeo_link | escape }}" aria-describedby="a11y-external-message">
+                      <i class="fab fa-pinterest-p"></i> Vimeo
+                    </a>
+                  </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+          {% if section.settings.footer_newsletter_enable == true %}
+          <div class="footer_menu footer_menu_border">
+            <span class="fauxh5">{{ section.settings.section_title }}</span>
+            {{ section.settings.subheading }}
+
+<script src="https://www.cognitoforms.com/f/seamless.js" data-key="5fv63rPOhUiKLwujr2MbvA" data-form="3"></script>
+<style><!--
+.cog-cognito a {color: #fff !important;}
+--></style>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="copy_right_me">
+          <div class="copy_right_left">
+            <img loading="lazy" src="{{ 'footer-logo.png' | file_url }}" alt="MemoryStitch logo" style="margin-right: 20px;"/>
+            <p class="fauxh4" style="margin-top: 22px;">&copy; {{ 'now' | date: "%Y" }} MemoryStitch All Rights Reserved</p>
+          </div>
+          <div class="copy_right_right">
+            {% if section.settings.show_payment_icons %}
+            <div>
+              <div class="grid__item site-footer__payment-icons">
+                {% unless shop.enabled_payment_types == empty %}
+                <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
+                <ul class="payment-icons list--inline site-footer__icon-list">
+                  {% for type in shop.enabled_payment_types %}
+                  <li class="payment-icon">
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% endunless %}
+              </div>
+            </div>
+            <a id="bbblink" class="ruhzbus" href="https://www.bbb.org/us/ne/lincoln/profile/quilts/memorystitch-0714-300181483#bbbseal" title="MemoryStitch, Quilts, Lincoln, NE" style="display: block;position: relative;overflow: hidden; width: 100px; height: 45px; margin: 0px; padding: 0px;">
+              <img loading="lazy"
+                style="padding: 0px; border: none;"
+                id="bbblinkimg"
+                src="https://seal-nebraska.bbb.org/logo/ruhzbus/memorystitch-300181483.png"
+                width="200"
+                height="45"
+                alt="MemoryStitch, Quilts, Lincoln, NE"/>
+            </a>
+            <script type="text/javascript">var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); (function(){var s=document.createElement('script');s.src=bbbprotocol + 'seal-nebraska.bbb.org' + unescape('%2Flogo%2Fmemorystitch-300181483.js');s.type='text/javascript';s.async=true;var st=document.getElementsByTagName('script');st=st[st.length-1];var pt=st.parentNode;pt.insertBefore(s,pt.nextSibling);})();</script>
+            <a rel="nofollow" href="//www.shopify.com/pci-compliant?utm_source=secure&amp;utm_medium=shop" title="This online store is secured by Shopify" target="_blank">
+              <img loading="lazy" src="//cdn.shopify.com/s/images/badges/shopify-secure-badge-light-shadow.png" alt="Shopify secure badge" />
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": {
+      "en": "Footer",
+      "de": "Fußzeile",
+      "fr": "Pied de page",
+      "it": "Footer",
+      "ja": "フッター",
+      "es": "Pie de página",
+      "pt-BR": "Rodapé"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": {
+          "en": "Menu",
+          "de": "Menü",
+          "fr": "Menu",
+          "it": "Menu",
+          "ja": "メニュー",
+          "es": "Menú",
+          "pt-BR": "Menu"
+        }
+      },
+      {
+        "type": "link_list",
+        "id": "footer_linklist",
+        "label": {
+          "en": "Primary menu",
+          "de": "Hauptmenü",
+          "fr": "Menu principal",
+          "it": "Menu principale",
+          "ja": "プライマリメニュー",
+          "es": "Menú primario",
+          "pt-BR": "Menu principal"
+        },
+        "default": "footer",
+        "info": {
+          "en": "This menu won't show dropdown items",
+          "de": "Dieses Menü zeigt keine Dropdowns an",
+          "fr": "Ce menu n'affichera pas les éléments des menus déroulants",
+          "it": "Questo menu non mostrerà elementi a discesa",
+          "ja": "このメニューにはドロップダウンアイテムは表示されません",
+          "es": "Este menú no mostrará elementos desplegables",
+          "pt-BR": "Este menu não mostra itens de menus suspensos"
+        }
+      },
+      {
+        "type": "link_list",
+        "id": "footer_linklist_two",
+        "label": {
+          "en": "Additional menu",
+          "de": "Extra Menü",
+          "fr": "Menu supplémentaire",
+          "it": "Menu aggiuntivo",
+          "ja": "追加メニュー",
+          "es": "Menú adicional",
+          "pt-BR": "Menu adicional"
+        },
+        "default": "main-menu",
+        "info": {
+          "en": "This menu won't show dropdown items",
+          "de": "Dieses Menü zeigt keine Dropdowns an",
+          "fr": "Ce menu n'affichera pas les éléments des menus déroulants",
+          "it": "Questo menu non mostrerà elementi a discesa",
+          "ja": "このメニューにはドロップダウンアイテムは表示されません",
+          "es": "Este menú no mostrará elementos desplegables",
+          "pt-BR": "Este menu não mostra itens de menus suspensos"
+        }
+      },
+      {
+        "type": "link_list",
+        "id": "footer_linklist_three",
+        "label": {
+          "en": "Additional menu",
+          "de": "Extra Menü",
+          "fr": "Menu supplémentaire",
+          "it": "Menu aggiuntivo",
+          "ja": "追加メニュー",
+          "es": "Menú adicional",
+          "pt-BR": "Menu adicional"
+        },
+        "default": "main-menu",
+        "info": {
+          "en": "This menu won't show dropdown items",
+          "de": "Dieses Menü zeigt keine Dropdowns an",
+          "fr": "Ce menu n'affichera pas les éléments des menus déroulants",
+          "it": "Questo menu non mostrerà elementi a discesa",
+          "ja": "このメニューにはドロップダウンアイテムは表示されません",
+          "es": "Este menú no mostrará elementos desplegables",
+          "pt-BR": "Este menu não mostra itens de menus suspensos"
+        }
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Newsletter",
+          "de": "Newsletter",
+          "fr": "Newsletter",
+          "it": "Newsletter",
+          "ja": "ニュースレター",
+          "es": "Boletín",
+          "pt-BR": "Newsletter"
+        }
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_newsletter_enable",
+        "label": {
+          "en": "Show newsletter signup",
+          "de": "Newsletter Signup anzeigen",
+          "fr": "Afficher l'inscription à la newsletter",
+          "it": "Mostra iscrizione alla Newsletter",
+          "ja": "ニュースレターのサインアップを表示する",
+          "es": "Mostrar suscripción al boletín",
+          "pt-BR": "Exibir assinatura da newsletter"
+        },
+        "default": false
+      },
+      {
+      "type": "text",
+      "id": "section_title",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "de": "Unseren Newsletter abonnieren",
+        "en": "Subscribe to our newsletter",
+        "es": "Suscríbete a nuestro boletín de noticias",
+        "fr": "S'inscrire à la newsletter",
+        "it": "Iscriviti alla nostra newsletter",
+        "ja": "ストアからのお知らせを受け取る",
+        "pt-BR": "Assine a nossa newsletter"
+      }
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": {
+          "en": "Subheading",
+          "de": "Unter-Überschrift",
+          "fr": "Sous-titre",
+          "it": "Sottotitolo",
+          "ja": "小見出し",
+          "es": "Subtítulo",
+          "pt-BR": "Subtítulo"
+        },
+        "default": {
+          "en": "<p>A short sentence describing what someone will receive by subscribing</p>",
+          "de": "<p>Eine kurze Beschreibung zum Inhalt des Newsletters</p>",
+          "fr": "<p>Petite phrase qui décrit ce qu'on reçoit en s'inscrivant</p>",
+          "it": "<p>Una breve frase che descrive ciò che qualcuno riceverà effettuando l'iscrizione</p>",
+          "ja": "<p>購読している人が何を受け取ることができるかについて説明する短い文章</p>",
+          "es": "<p>Una frase corta que describe lo que las personas recibirán al suscribirse</p>",
+          "pt-BR": "<p>Uma frase curta que descreve o que alguém receberá ao assinar</p>"
+        }
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Payment methods",
+          "de": "Zahlungsarten",
+          "fr": "Moyens de paiement",
+          "it": "Metodi di pagamento",
+          "ja": "お支払い方法",
+          "es": "Métodos de pago",
+          "pt-BR": "Formas de pagamento"
+        }
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": {
+          "en": "Show payment icons",
+          "de": "Zahlungs-Buttons anzeigen",
+          "fr": "Afficher les icônes de paiement",
+          "it": "Mostra le icone di pagamento",
+          "ja": "支払いアイコンを表示する",
+          "es": "Mostrar iconos de pago",
+          "pt-BR": "Exibir ícones de pagamento"
+        },
+        "default": false
+      }
+    ]
+  }
+{% endschema %}

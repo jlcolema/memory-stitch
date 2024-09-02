@@ -1,0 +1,1339 @@
+{
+  "current": {
+    "color_text": "#000000",
+    "color_body_text": "#000000",
+    "color_sale_text": "#557b97",
+    "color_button": "#263842",
+    "color_button_text": "#fff",
+    "color_small_button_text_border": "#3d4246",
+    "color_text_field_text": "#000",
+    "color_text_field_border": "#949494",
+    "color_text_field": "#fff",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 40,
+    "color_borders": "#e8e9eb",
+    "color_body_bg": "#fff",
+    "type_header_font": "open_sans_n4",
+    "type_header_base_size": 26,
+    "type_base_font": "open_sans_n4",
+    "type_base_size": 16,
+    "type_bold_product_titles": false,
+    "share_image": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "https:\/\/twitter.com\/mymemorystitch",
+    "social_facebook_link": "https:\/\/www.facebook.com\/mymemorystitch",
+    "social_pinterest_link": "https:\/\/www.pinterest.com\/memorystitch",
+    "social_instagram_link": "https:\/\/instagram.com\/mymemorystitch",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "https:\/\/www.youtube.com\/channel\/UCgeJXrZg4bBHC3E1bo8OuQA",
+    "social_vimeo_link": "",
+    "favicon": "shopify:\/\/shop_images\/MemoryStitch-Logo-ALL-82.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/MemoryStitch-Logo-Main.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "scm_pl_pisregex": ".grid__item .grid-view-item__link",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo": "shopify:\/\/shop_images\/MemoryStitch-Logo-Main.png",
+          "logo_max_width": 250,
+          "main_linklist": "main-menu",
+          "message": false,
+          "home_page_only": false,
+          "message_text": "<a href=\"https:\/\/memorystitch.com\/products\/gift-card\">Last Chance! Get a Full T-shirt Quilt <strong>Gift Card<\/strong> at 25% off with code: <strong>JOY25<\/strong><\/a>",
+          "message_link": "",
+          "color_bg": "#f15b60",
+          "color_text": "#ffffff",
+          "top_offers": "Shop announcement banner with a link or CODE. Details. |  Call 1-855-792-4205 or open a chat for questions"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_linklist": "customer-service",
+          "footer_linklist_two": "information",
+          "footer_linklist_three": "contact-us",
+          "footer_newsletter_enable": true,
+          "section_title": "Subscribe Today!",
+          "subheading": "<p>Get special offers and product updates.<\/p>",
+          "show_payment_icons": true
+        }
+      },
+      "1553600458086": {
+        "type": "home_banner",
+        "disabled": true,
+        "settings": {
+          "banner_img": "shopify:\/\/shop_images\/Homepage-Header_cd87f6d4-e7d3-4cb1-ac20-1c269908849f.jpg",
+          "title": "Let us help you <br>tell your story",
+          "btn": "START CREATING",
+          "link": "shopify:\/\/collections\/all",
+          "btn_two": "Watch our story",
+          "link_two": "8qyEG1qE4o8"
+        }
+      },
+      "1553601358505": {
+        "type": "home_features",
+        "blocks": {
+          "1553601364034": {
+            "type": "repeat",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/MemoryStitch_icons_Collect-Your-Favorite-Shirts_900px.png",
+              "title": "1) COLLECT YOUR FAVE SHIRTS",
+              "tag": "Select the T-shirts (front, back, or both) you want to use for your quilt, customize your T-shirt quilt, and checkout.",
+              "btn": "Learn More",
+              "link": "shopify:\/\/pages\/how-it-works"
+            }
+          },
+          "1553601399091": {
+            "type": "repeat",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/MemoryStitch_icons_Cut-and-Send-Shirts-To-MemoryStitch_900px.png",
+              "title": "2) CUT AND SEND THEM TO US",
+              "tag": "After checking out, use the instructions to cut and package your shirts up. We will take it from there. Don't want to cut your shirts? Hit \"Learn More\" for details.",
+              "btn": "Learn More",
+              "link": "shopify:\/\/pages\/how-it-works"
+            }
+          },
+          "1553601403416": {
+            "type": "repeat",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/MemoryStitch_icons_We-Send-Your-T-shirt-Quilt_900px.png",
+              "title": "3) WE'LL SEND YOUR <br> T-SHIRT QUILT",
+              "tag": "We'll stitch together your shirts into an awesome T-shirt quilt and ship it back to you anywhere  in the US for FREE!",
+              "btn": "Learn More",
+              "link": "shopify:\/\/pages\/how-it-works"
+            }
+          }
+        },
+        "block_order": [
+          "1553601364034",
+          "1553601399091",
+          "1553601403416"
+        ],
+        "settings": {
+          "title": "How It Works",
+          "tag": "Let's begin telling your t-shirt quilt story"
+        }
+      },
+      "1553602714929": {
+        "type": "home_testimonial",
+        "settings": {
+          "img": "shopify:\/\/shop_images\/0731.jpg",
+          "title": "- CUSTOMER TESTIMONIALS -",
+          "tag": "“Absolutely love the look and feel of my t-shirt quilt! The turn around time and communication was great.”",
+          "btn": "READ MORE",
+          "link": "shopify:\/\/pages\/testimonials",
+          "color": "#293d47",
+          "img_two": "shopify:\/\/shop_images\/1206.jpg",
+          "title_two": "- HOW TO PREP FOR YOUR T-SHIRT QUILT -",
+          "tag_two": "Follow our simple <br> step-by-step instructions <br>to cut and ready your shirts <br> to be made into your <br> one-of-a-kind T-Shirt Quilt!",
+          "btn_two": "READ MORE",
+          "link_two": "shopify:\/\/pages\/how-it-works",
+          "color_two": "#26b0c7"
+        }
+      },
+      "1553605524035": {
+        "type": "home_single_image",
+        "disabled": true,
+        "settings": {
+          "img": "shopify:\/\/shop_images\/cdn_shopify_com-1614-done.jpg"
+        }
+      },
+      "1553606203110": {
+        "type": "home_single_image",
+        "disabled": true,
+        "settings": {
+          "img": "shopify:\/\/shop_images\/cdn_shopify_com-1104-done.jpg"
+        }
+      },
+      "1553669532343": {
+        "type": "home_faq",
+        "blocks": {
+          "1554883144630": {
+            "type": "repeat",
+            "settings": {
+              "question": "How do I clean and care for my MemoryStitch t-shirt quilts, pillows and pillow cases?",
+              "ans": "<p>Machine wash with cold water. Do not use bleach. For best results, wash alone. For pillows, remove the pillow insert before washing. Tumble dry on a low setting or air dry. Do not iron or apply heat.<\/p>"
+            }
+          },
+          "1554883147037": {
+            "type": "repeat",
+            "settings": {
+              "question": "How do I prepare my shirts?",
+              "ans": "<p>Gather the correct number of t-shirts needed for the size quilt you want and make sure those shirts work well for your selected panel size. Visit <a href=\"https:\/\/memorystitch.com\/pages\/how-to-prepare-your-shirts\">How To Prepare Your Shirts<\/a> for more details. <\/p>"
+            }
+          },
+          "1555619705767": {
+            "type": "repeat",
+            "settings": {
+              "question": "What type of shirts and fabric can I use?",
+              "ans": "<p> Your t-shirt quilt doesn't have to be just t-shirts! Making T-shirt quilts is lots of fun, but sometimes the materials create lots of problems.  To create an awesome experience and the most snuggly quilt, <a href=\"https:\/\/memorystitch.com\/pages\/faq#faq-kindsoffabric\">see our recommendations.<\/a><\/p>"
+            }
+          },
+          "1553669538659": {
+            "type": "repeat",
+            "settings": {
+              "question": "What is a Fuzz Monsta™?",
+              "ans": "The Fuzz Monsta™ is a new type of t-shirt quilt that is made up of larger 15\" panels and a border of Minky in your color choice. This product is for our Minky lovers out there who might only have a few t-shirts, but are still looking to wrap up in our super soft and plush cuddle fabric! <a href=\"https:\/\/memorystitch.com\/products\/fuzz-monsta\">Read More<\/a>"
+            }
+          }
+        },
+        "block_order": [
+          "1554883144630",
+          "1554883147037",
+          "1555619705767",
+          "1553669538659"
+        ],
+        "settings": {
+          "title": "Frequently asked t-shirt <br>quilt questions",
+          "tag": "",
+          "link": "shopify:\/\/pages\/faq"
+        }
+      },
+      "page_faq": {
+        "type": "page_faq",
+        "blocks": {
+          "1553671153125": {
+            "type": "faq",
+            "settings": {
+              "question": "This is a dropdown for a frequently asked question ?",
+              "ans": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "1553671159534": {
+            "type": "faq",
+            "settings": {
+              "question": "This is a dropdown for a frequently asked question ?",
+              "ans": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "1553671162331": {
+            "type": "faq",
+            "settings": {
+              "question": "This is a dropdown for a frequently asked question ?",
+              "ans": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "1553671164220": {
+            "type": "feature",
+            "settings": {
+              "img": "",
+              "title": "1) COLLECT YOUR FAVE SHIRTS",
+              "tag": "Select the T-shirts (front, back, or both) you want to use for your quilt, customize your T-shirt quilt, and checkout.",
+              "btn": "LEARN MORE",
+              "link": "shopify:\/\/pages\/how-to-prep"
+            }
+          },
+          "1553671177702": {
+            "type": "feature",
+            "settings": {
+              "img": "",
+              "title": "2) CUT AND SEND THEM TO US",
+              "tag": "After checking out, use the instructions to cut and package your shirts up. We will take it from there.",
+              "btn": "LEARN MORE",
+              "link": "shopify:\/\/pages\/how-to-prep"
+            }
+          },
+          "1553671186479": {
+            "type": "feature",
+            "settings": {
+              "img": "",
+              "title": "3) WE'LL SEND YOUR QUILT",
+              "tag": "We'll stitch together your shirts into an awesome T-shirt quilt and ship it back to you anywhere in the US for FREE!",
+              "btn": "LEARN MORE",
+              "link": "shopify:\/\/pages\/how-to-prep"
+            }
+          }
+        },
+        "block_order": [
+          "1553671153125",
+          "1553671159534",
+          "1553671162331",
+          "1553671164220",
+          "1553671177702",
+          "1553671186479"
+        ],
+        "settings": {
+          "faq_title": "Frequently asked Questions",
+          "faq_tag": "Here’s some details about MemoryStitch and our process.",
+          "faq_contact": "Don’t see an answer to your question here?",
+          "faq_btn": "CONTACT US",
+          "faq_link": "shopify:\/\/pages\/contact-us",
+          "features_title": "HOW IT WORKS",
+          "features_tag": "Helping you tell your story",
+          "create_you": "Ready to transform your <br> t-shirts into the perfect gift?",
+          "create_you_btn": "CREATE YOURS TODAY",
+          "create_you_link": "shopify:\/\/collections\/all"
+        }
+      },
+      "page_our_store": {
+        "type": "page_our_store",
+        "blocks": {
+          "1553678519118": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We champion customer success"
+            }
+          },
+          "1553678521959": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We positively impact the community"
+            }
+          },
+          "1553678523889": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We build each other up"
+            }
+          },
+          "1553678526145": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553678535250": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553678541175": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553678548673": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553679084997": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1554878381519": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1554878392388": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1554878399492": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1555587219272": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We have fun"
+            }
+          },
+          "1555587225002": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We believe in the power of storytelling"
+            }
+          },
+          "1555587227860": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We sweat the small stuff"
+            }
+          },
+          "1555587230106": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We welcome creativity"
+            }
+          },
+          "1555587232137": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We embrace transparency"
+            }
+          },
+          "1555587235217": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We chase opportunity"
+            }
+          },
+          "1555587237985": {
+            "type": "our_valuse",
+            "settings": {
+              "our_valuse_slider": "We deliver outstanding experiences"
+            }
+          }
+        },
+        "block_order": [
+          "1553678519118",
+          "1553678521959",
+          "1553678523889",
+          "1553678526145",
+          "1553678535250",
+          "1553678541175",
+          "1553678548673",
+          "1553679084997",
+          "1554878381519",
+          "1554878392388",
+          "1554878399492",
+          "1555587219272",
+          "1555587225002",
+          "1555587227860",
+          "1555587230106",
+          "1555587232137",
+          "1555587235217",
+          "1555587237985"
+        ],
+        "settings": {
+          "banner": "shopify:\/\/shop_images\/0946-Our-Story.jpg",
+          "banner_title": "Our story",
+          "banner_tag": "We’ll help you tell yours.",
+          "banner_btn": "Watch our story",
+          "banner_link": "8qyEG1qE4o8",
+          "we_are_title": "- WHO WE ARE -",
+          "we_are_tag": "It's not about what we make;<br> it's about how we make you feel",
+          "we_are_content": "We consider it a compliment when people tell us that MemoryStitch is out of the ordinary. MemoryStitch doesn't think of itself as just a company; we're family. Having many years of quilting experience, we love impacting the lives of our customers and team, while welcoming our customers into our family by creating T-shirt quilts that won't break the bank. MemoryStitch proudly embraces change and supports entrepreneurial attitudes. We believe in having a strong work ethic, producing unsurpassed T-shirt quilts and other textile products, and providing outstanding customer service. We understand that our customers may not remember exactly what we said or did, but they will always remember how we made them feel.",
+          "testimonial_img": "shopify:\/\/shop_images\/0640.jpg",
+          "testimonial_title": "- OUR MISSION -",
+          "testimonial_tag": "We strive to create cherished<br> one-of-a-kind keepsakes by<br> reviving your well-loved<br> mementos so that you<br> can continue to tell your stories<br> with them for years to come.",
+          "testimonial_btn": "READ MORE",
+          "testimonial_link": "shopify:\/\/pages\/testimonials",
+          "testimonial_color": "#26b0c7",
+          "testimonial_img_two": "shopify:\/\/shop_images\/Memory-Stitch-6-web.jpg",
+          "testimonial_title_two": "- OUR TEAM -",
+          "testimonial_tag_two": "Working hard behind the scenes<br> at MemoryStitch is a team of<br> individuals who are passionate,<br> dedicated, and driven to<br> preserving memories by stitching<br> together your story. Our stories<br> have brought us this far, but yours<br> allow us to continue growing.<p><\/p><p><span style=\"color: #ffffff;\"><a style=\"color: #26b0c7;\" href=\"\/pages\/steve-nabity-ceo-bio\">- MORE - <\/a><\/span><\/p>",
+          "testimonial_btn_two": "READ MORE",
+          "testimonial_link_two": "shopify:\/\/pages\/steve-nabity-ceo-bio",
+          "testimonial_color_two": "#293d47",
+          "testimonial_img_three": "shopify:\/\/shop_images\/iStock-966297342_a01bf074-ff26-4c7a-a091-d36daae13cea.jpg",
+          "testimonial_title_three": "-SOCIAL MISSION -",
+          "testimonial_tag_three": "It’s our social responsibility to repurpose cherished clothing while providing opportunities to those needing a helping hand whether unemployed or experiencing misfortune. Letting go of biases, providing fair wages, and teaching valuable skills allows us to make a difference by being the catalyst between where they are today and where they hope to be in the future.",
+          "testimonial_btn_three": "READ MORE",
+          "testimonial_link_three": "",
+          "testimonial_color_three": "#26b0c7",
+          "how_made_title": "- HOW IT'S MADE -",
+          "how_made_tag": "The big picture",
+          "how_made_content": "MemoryStitch quickly creates affordable, high-quality upcycled quilts and other textile goods from well-loved t-shirts. We do what we do in order to improve the lives of our customers while also helping the planet and positively impacting the community.",
+          "how_made_video": "8qyEG1qE4o8",
+          "our_sec_img": "shopify:\/\/shop_images\/1614.jpg",
+          "located_title": "- LOCALLY MADE IN NEBRASKA -",
+          "located_tag": "We're located directly in <br> the center of the heartland",
+          "located_contebt": "Our corporate office is located in Lincoln, NE with manufacturing facilities located in Omaha and Lincoln, NE. We’re proud to say we don’t outsource any of our work.",
+          "located_img": "shopify:\/\/shop_images\/United-States-Heart_4a7ec33d-1e70-49af-96ee-f0c6c48f1f65.png",
+          "our_values_title": "- OUR VALUES -",
+          "happy_customers_title": "- PHOTOS FROM HAPPY CUSTOMERS -",
+          "create_your_title": "Ready to transform your <br> t-shirts into the perfect gift?",
+          "create_your_btn": "CREATE YOURS TODAY",
+          "create_your_link": "shopify:\/\/collections\/all"
+        }
+      },
+      "page_testimonial": {
+        "type": "page_testimonial",
+        "blocks": {
+          "1553849427929": {
+            "type": "testmoni_user",
+            "settings": {
+              "testmonial_img": "shopify:\/\/shop_images\/57625236_395666934601199_3258736561017061376_n.jpg",
+              "tag": "MemoryStitch the fastest growing upcycling T-shirt quilt company has launched T-shirt Pillows and a line of Premium Long Arm Stitched T-shirt quilts.\n<p>\nMay 1, 2019<\/p>",
+              "btn": "MemoryStitch Launches <br> New Products"
+            }
+          },
+          "1553682980922": {
+            "type": "testmoni_user",
+            "settings": {
+              "testmonial_img": "shopify:\/\/shop_images\/k58MITWd_400x400_0cd8bf63-650d-4f58-8bd6-acb1de4b6767.png",
+              "tag": "<p><a href=\"http:\/\/siliconprairienews.com\/2018\/12\/quilting-startup-memorystitch-finds-niche-market-in-online-retail\/\">Quilting startup MemoryStitch finds niche market in online retail.<\/a><\/p>\n<p> December 13, 2018\n<\/p>",
+              "btn": "Silicon Prairie News"
+            }
+          },
+          "1553685652155": {
+            "type": "happy_customery",
+            "settings": {
+              "happy_img": ""
+            }
+          },
+          "1553685662298": {
+            "type": "happy_customery",
+            "settings": {
+              "happy_img": ""
+            }
+          },
+          "1553685670359": {
+            "type": "happy_customery",
+            "settings": {
+              "happy_img": ""
+            }
+          },
+          "1553685676506": {
+            "type": "happy_customery",
+            "settings": {
+              "happy_img": ""
+            }
+          },
+          "1553850205869": {
+            "type": "happy_customery",
+            "settings": {
+              "happy_img": ""
+            }
+          },
+          "1553683303314": {
+            "type": "testimonial_slider",
+            "settings": {
+              "testimonial_img": "shopify:\/\/shop_images\/Screen_Shot_2019-05-06_at_12.29.37_PM.png",
+              "testimonial_title": "Love my new MemoryStitch blanket! It’s soft, comfortable, and truly feels like good quality. - Carly G.",
+              "testimonial_tag": "- CARLY G."
+            }
+          },
+          "1553683313330": {
+            "type": "testimonial_slider",
+            "settings": {
+              "testimonial_img": "shopify:\/\/shop_images\/Screen_Shot_2019-05-06_at_12.47.08_PM.png",
+              "testimonial_title": "Love love love! We will cherish our quilt forever. So emotional over the memories we have captured!!",
+              "testimonial_tag": "- EMILY S."
+            }
+          },
+          "1557164556635": {
+            "type": "testimonial_slider",
+            "settings": {
+              "testimonial_img": "shopify:\/\/shop_images\/Screen_Shot_2019-05-06_at_12.42.19_PM.png",
+              "testimonial_title": "The process was so easy! My blanket is so soft and cute and looks exactly how I wanted.",
+              "testimonial_tag": "- MELISSA S."
+            }
+          },
+          "1557164622373": {
+            "type": "testimonial_slider",
+            "settings": {
+              "testimonial_img": "shopify:\/\/shop_images\/Screen_Shot_2019-05-06_at_12.43.59_PM.png",
+              "testimonial_title": "It’s exactly what I wanted & then some!! Awesome price, good quality & extremely quick shipping time! If I had more tee shirts I’d order another!! So glad I found this website! :heartbeat:",
+              "testimonial_tag": "- DANA D."
+            }
+          }
+        },
+        "block_order": [
+          "1553849427929",
+          "1553682980922",
+          "1553685652155",
+          "1553685662298",
+          "1553685670359",
+          "1553685676506",
+          "1553850205869",
+          "1553683303314",
+          "1553683313330",
+          "1557164556635",
+          "1557164622373"
+        ],
+        "settings": {
+          "testimonial_title_main": "MemoryStitch in the News",
+          "testmionial_tag_main": "Media Email - media@memorystitch.com",
+          "review": "Review Title Here",
+          "review_btn": "+ MORE",
+          "review_img": "",
+          "link_review": "",
+          "happy_title": "- PHOTOS FROM HAPPY CUSTOMERS -",
+          "happy_tag": "Ready to transform your <br> t-shirts into the perfect gift?",
+          "happy_btn": "CREATE YOURS TODAY",
+          "happy_link": "shopify:\/\/collections\/all"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "blocks": {
+          "1553688382941": {
+            "type": "how_Work",
+            "settings": {
+              "how_work_img": "shopify:\/\/shop_images\/memorystitchicons-01_f35e79ad-5154-4eab-83bf-eaaa73d45465.png",
+              "how_work_title": "1) COLLECT YOUR FAVE SHIRTS",
+              "how_work_tag": "Select the T-shirts (front, back, or both) you want to use for your quilt, customize your T-shirt quilt, and checkout.",
+              "how_work_btn": "LEARN MORE",
+              "how_work_link": "shopify:\/\/pages\/how-it-works"
+            }
+          },
+          "1553688411045": {
+            "type": "how_Work",
+            "settings": {
+              "how_work_img": "shopify:\/\/shop_images\/memorystitchicons-02_0b9262a3-0c46-4b62-bf5e-8800142b716f.png",
+              "how_work_title": "2) CUT AND SEND THEM TO US",
+              "how_work_tag": "After checking out, use the instructions to cut and package your shirts up. We will take it from there. Don't want to cut your shirts? Hit \"Learn More\" for details.",
+              "how_work_btn": "LEARN MORE",
+              "how_work_link": "shopify:\/\/pages\/how-it-works"
+            }
+          },
+          "1553688427780": {
+            "type": "how_Work",
+            "settings": {
+              "how_work_img": "shopify:\/\/shop_images\/memorystitchicons-03.png",
+              "how_work_title": "3) WE'LL SEND YOUR <br> T-SHIRT QUILT",
+              "how_work_tag": "We'll stitch together your shirts into an awesome T-shirt quilt and ship it back to you anywhere in the US for FREE!",
+              "how_work_btn": "LEARN MORE",
+              "how_work_link": "shopify:\/\/pages\/how-it-works"
+            }
+          },
+          "1553688858549": {
+            "type": "collection_faq",
+            "settings": {
+              "question": "Can MemoryStitch cut my shirts for me?",
+              "ans": "Save time by letting us do the cutting! For a small fee, we'll prep your t-shirts, so you don't have to! <a href=\"https:\/\/learn.memorystitch.com\/articles\/let-us-cut-your-t-shirts-for-you\">Read More<\/a>"
+            }
+          },
+          "1553688861812": {
+            "type": "collection_faq",
+            "settings": {
+              "question": "How do I ship my shirts?",
+              "ans": "Send your shirts with a copy of your printed confirmation email and\/or order checklist. If you don't have a printer, write your order number (found at the top of your confirmation email) on a sheet of paper and place it in the box.\n<br><br>\nIf you have a desired layout, snap a photo of it, and send it in with your shirts as well. No printer? Email the photo to info@memorystitch.com - just be sure to include your order number. Contents of your shipment can shift in transit, so you MUST include a photo if you desire a specific layout.\n<br><br>\nShip to:\nMemoryStitch\n800 Pioneers Blvd\nLincoln, NE 68502\n<br>\n<a href=\"https:\/\/learn.memorystitch.com\/articles\/how-do-i-ship\">Read More<\/a>"
+            }
+          },
+          "1553688864693": {
+            "type": "collection_faq",
+            "settings": {
+              "question": "What type of shirts and fabric can I use?",
+              "ans": "Your t-shirt quilt doesn't have to be just t-shirts! Making T-shirt quilts is lots of fun, but sometimes the materials create lots of problems.  To create an awesome experience and the most snuggly quilt, <a href=\"https:\/\/learn.memorystitch.com\/articles\/what-type-of-shirts-and-fabric-can-i-use\">below are our recommendations.<\/a>"
+            }
+          },
+          "1553689062447": {
+            "type": "collection_faq",
+            "settings": {
+              "question": "How do I care for MemoryStitch Products?",
+              "ans": "Did you know your MemoryStitch products are machine washable?<br>Washing Your MemoryStitch Quilt Products\n1. To wash your t-shirt quilt, machine wash on cold.\n<br>2. For best results, wash alone. \n<br>3. Tumble dry on a low setting or air dry.\n<br>4. Do not iron your quilt or apply heat.\n<br>5. Do not use bleach. <br><a href=\"https:\/\/learn.memorystitch.com\/articles\/how-do-i-wash-my-memorystitch-t-shirt-quilt-1\">Read More<\/a>"
+            }
+          },
+          "1553851906306": {
+            "type": "collection_faq",
+            "settings": {
+              "question": "Can I layout or design my T-shirt quilt?",
+              "ans": "Yes, we'll follow your layout at <strong>no extra charge!<\/strong> \n<br><br>1. Lay the shirts out in the order you'd like them put together. Lay them out on the floor, your bed, wherever you can find room! (Make sure to follow the grids on each size. For example, a full size is 5x6.)\n<br><br>2. Take a picture with your phone. Make sure all of the shirts are distinguishable! \n<br><br>3. Print out the picture and send it in with your shirts. No printer? No problem, send an email with your desired layout photo and your order number to info@memorystitch.com. \n<br><br>4. The MemoryStitch Production Team will follow the layout the best they can, while also making sure your t-shirts are displayed the best way they can be - at no extra charge to you!\n<a href=\"https:\/\/learn.memorystitch.com\/articles\/can-i-layout-or-design-my-t-shirt-quilt\">Read More<\/a>"
+            }
+          }
+        },
+        "block_order": [
+          "1553688382941",
+          "1553688411045",
+          "1553688427780",
+          "1553688858549",
+          "1553688861812",
+          "1553688864693",
+          "1553689062447",
+          "1553851906306"
+        ],
+        "settings": {
+          "layout": "grid",
+          "grid": 3,
+          "rows": 4,
+          "show_collection_image": false,
+          "show_vendor": false,
+          "sort_enable": false,
+          "tags_enable": false,
+          "collection_happy": "shopify:\/\/shop_images\/FuzzMonsta-Home2.png",
+          "how_work_title": "- HOW IT WORKS -",
+          "how_work_tag": "Helping you tell your story",
+          "faq_title": "Frequently asked questions",
+          "faq_tag": "Don’t see an answer to your question here? <a href=\"\/pages\/contact-us\">Contact US<\/a>"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "blocks": {
+          "1553691899021": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553691918175": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553691929876": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553691937228": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553692104300": {
+            "type": "happy_customer",
+            "settings": {}
+          },
+          "1553691966306": {
+            "type": "features",
+            "settings": {
+              "features_img": "shopify:\/\/shop_images\/MemoryStitch_icons_Collect-Your-Favorite-Shirts_900px.png",
+              "features_title": "1) COLLECT YOUR FAVE SHIRTS",
+              "features_tag": "Select the T-shirts (front, back, or both) you want to use for your quilt, customize your T-shirt quilt, and checkout.",
+              "features_btn": "LEARN MORE",
+              "features_link": "shopify:\/\/pages\/how-it-works"
+            }
+          },
+          "1553691977419": {
+            "type": "features",
+            "settings": {
+              "features_img": "shopify:\/\/shop_images\/MemoryStitch_icons_Cut-and-Send-Shirts-To-MemoryStitch_900px.png",
+              "features_title": "2) CUT AND SEND THEM TO US",
+              "features_tag": "After checking out, use the instructions to cut and package your shirts up. We will take it from there. Don't want to cut your shirts? Hit \"Learn More\" for details.",
+              "features_btn": "LEARN MORE",
+              "features_link": "shopify:\/\/pages\/how-it-works"
+            }
+          },
+          "1553692001933": {
+            "type": "features",
+            "settings": {
+              "features_img": "shopify:\/\/shop_images\/MemoryStitch_icons_We-Send-Your-T-shirt-Quilt_900px.png",
+              "features_title": "3) WE'LL SEND YOUR QUILT",
+              "features_tag": "We'll stitch together your shirts into an awesome T-shirt quilt and ship it back to you anywhere in the US for FREE!",
+              "features_btn": "LEARN MORE",
+              "features_link": "shopify:\/\/pages\/how-it-works"
+            }
+          },
+          "1553692023541": {
+            "type": "faq",
+            "settings": {
+              "question": "What is Minky backing?",
+              "ans": "Minky fabric is very soft and cuddly. Some people say it feels like real mink or soft as cashmere, unlike regular fleece. <a href=\"https:\/\/memorystitch.com\/pages\/faq#faq-minky\">Read More<\/a>"
+            }
+          },
+          "1556206137649": {
+            "type": "faq",
+            "settings": {
+              "question": "Can I change my order once it's placed?",
+              "ans": "Did you order the wrong size or color? We got you covered! <a href=\"https:\/\/memorystitch.com\/pages\/faq#faq-changeorderr\">Read More<\/a>"
+            }
+          },
+          "1556206174592": {
+            "type": "faq",
+            "settings": {
+              "question": "Can I use the front and back of my T-shirts?",
+              "ans": "Absolutely! You can send us either the front, back, or both sides. You get to decide!"
+            }
+          }
+        },
+        "block_order": [
+          "1553691899021",
+          "1553691918175",
+          "1553691929876",
+          "1553691937228",
+          "1553692104300",
+          "1553691966306",
+          "1553691977419",
+          "1553692001933",
+          "1553692023541",
+          "1556206137649",
+          "1556206174592"
+        ],
+        "settings": {
+          "subtitle": "",
+          "image_size": "large",
+          "show_quantity_selector": true,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": true,
+          "enable_payment_button": false,
+          "show_share_buttons": true,
+          "happy_customery_title": "- PHOTOS FROM HAPPY CUSTOMERS -",
+          "features_title": "- HOW IT WORKS -",
+          "features_tag": "Helping you tell your story",
+          "faq_title": "Frequently asked questions",
+          "faq_tag": "Don’t see an answer to your question here? <a href=\"\/pages\/contact-us\">Contact US<\/a>"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "layout": "grid",
+          "blog_show_author": false,
+          "blog_show_date": true
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_share_buttons": true
+        }
+      },
+      "page_how_prep": {
+        "type": "page_how_prep",
+        "blocks": {
+          "1555395738669": {
+            "type": "how_Work",
+            "settings": {
+              "how_work_img": "shopify:\/\/shop_images\/memorystitchicons-01_f35e79ad-5154-4eab-83bf-eaaa73d45465.png",
+              "how_work_title": "1) COLLECT YOUR FAVE SHIRTS",
+              "how_work_tag": "Select the T-shirts (front, back, or both) you want to use for your quilt, customize your T-shirt quilt, and checkout.",
+              "how_work_btn": "LEARN MORE",
+              "how_work_link": "https:\/\/learn.memorystitch.com\/articles\/how-do-i-cut-my-t-shirts"
+            }
+          },
+          "1555395753378": {
+            "type": "how_Work",
+            "settings": {
+              "how_work_img": "shopify:\/\/shop_images\/memorystitchicons-02_0b9262a3-0c46-4b62-bf5e-8800142b716f.png",
+              "how_work_title": "2) CUT AND SEND THEM TO US",
+              "how_work_tag": "After checking out, use the instructions to cut and package your shirts up. We will take it from there.  Don't want to cut your shirts? Add \"Cut my Shirts for Me\" to your order, and we'll do it for you!",
+              "how_work_btn": "LEARN MORE",
+              "how_work_link": "https:\/\/learn.memorystitch.com\/articles\/how-do-i-cut-my-t-shirts"
+            }
+          },
+          "1555395764436": {
+            "type": "how_Work",
+            "settings": {
+              "how_work_img": "shopify:\/\/shop_images\/memorystitchicons-03.png",
+              "how_work_title": "3) WE'LL SEND YOUR QUILT",
+              "how_work_tag": "We'll stitch together your shirts into an awesome T-shirt quilt and ship it back to you anywhere in the US for FREE!",
+              "how_work_btn": "LEARN MORE",
+              "how_work_link": "https:\/\/learn.memorystitch.com\/articles\/how-do-i-cut-my-t-shirts"
+            }
+          },
+          "1555398147077": {
+            "type": "repeat",
+            "settings": {
+              "question": "I'm a first time T-shirt quilt buyer? How does this work?",
+              "ans": "Checkout our articles on how the process works and what to expect throughout your MemoryStitch experience!"
+            }
+          },
+          "1555398152626": {
+            "type": "repeat",
+            "settings": {
+              "question": "How do I prepare my shirts?",
+              "ans": "Gather the correct number of t-shirts needed for the size quilt you want and make sure those shirts work well for your selected panel size. Cut your shirts along the side seams to separate the front from the back. Send in the side you want - whether it's the front, back, or both!"
+            }
+          },
+          "1555398155150": {
+            "type": "repeat",
+            "settings": {
+              "question": "Which panel size should I choose?",
+              "ans": "8x8, 12x12, or 14x14? We recommend measuring your shirts prior to picking a panel size. For larger shirts or shirts with larger graphics, we recommend our 14x14, rather than the standard 12x12. We do have our Kids T-shirt quilts"
+            }
+          },
+          "1555398157972": {
+            "type": "repeat",
+            "settings": {
+              "question": "How do I wash my MemoryStitch T-shirt quilt?",
+              "ans": "To wash your T-shirt quilt, machine wash on cold. For best results, wash alone. Tumble dry on a low setting or air dry. Do not iron your quilt or apply heat. Do not use bleach."
+            }
+          },
+          "1555398159915": {
+            "type": "repeat",
+            "settings": {
+              "question": "Can I use clothing items other than T-shirts?",
+              "ans": "Of course! We can use jerseys, hoodies, and many more. For a full list, check out our FAQs page!"
+            }
+          }
+        },
+        "block_order": [
+          "1555395738669",
+          "1555395753378",
+          "1555395764436",
+          "1555398147077",
+          "1555398152626",
+          "1555398155150",
+          "1555398157972",
+          "1555398159915"
+        ],
+        "settings": {
+          "how_work_title": "",
+          "how_work_tag": "",
+          "testimonial_img": "shopify:\/\/shop_images\/1231.jpg",
+          "testimonial_title": "- SELECT PANEL SIZE -",
+          "testimonial_tag": "Select the panel size that is best for your <br> T-shirts when you order. 12X12” works great for <br> smalls and mediums. 14X14” is better for <br> larger sized shirts and graphics.",
+          "testimonial_btn": "READ MORE",
+          "testimonial_link": "",
+          "testimonial_color": "#4abdd0",
+          "testimonial_img_two": "shopify:\/\/shop_images\/1206.jpg",
+          "testimonial_title_two": "- CUT THEM IN HALF -",
+          "testimonial_tag_two": "Once you order, we will email you instructions for shipping your shirts to us! Before sending, <br> carefully cut your shirts in half along the seams. <br> Don't want to cut your shirts? Add \"Cut my  Shirts for Me\" to your order, and we'll do it for you! Just be sure to indicate which side of the t-shirts you want included with your layout!",
+          "testimonial_btn_two": "READ MORE",
+          "testimonial_link_two": "",
+          "testimonial_color_two": "#293d47",
+          "our_sec_img": "shopify:\/\/shop_images\/0741_fa989ce9-3a37-4735-90d9-f1c74bf23cad.jpg",
+          "located_tag": "Ship them to us",
+          "located_content": "Once your T-shirts are prepped and cut in half, place them along with a photo of your desired layout into the box to be shipped to MemoryStitch! Be sure to include your order number! We’ll take care of the rest and ship it back to you anywhere in the US for FREE!",
+          "title": "Frequently asked questions",
+          "faqtag": "Don’t see an answer to your question here? <a href=\"https:\/\/memorystitch.com\/pages\/contact-us\">Contact US<\/a>"
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": 3
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": false
+        }
+      },
+      "1559496569116": {
+        "type": "loox-carousel-reviews",
+        "settings": {
+          "max_width": 1920,
+          "arrows_color": "#293d47",
+          "dots_color": "#293d47",
+          "show_more": true,
+          "button_color": ""
+        }
+      },
+      "1553862999682": {
+        "type": "featured-product",
+        "disabled": true,
+        "settings": {
+          "featured_product": "t-shirt-quilt",
+          "image_size": "medium",
+          "show_quantity_selector": true,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": true,
+          "enable_payment_button": false,
+          "show_share_buttons": false
+        }
+      },
+      "1567631897603": {
+        "type": "collection",
+        "settings": {
+          "title": "Featured Products",
+          "collection": "all",
+          "grid": 4,
+          "rows": 1,
+          "show_vendor": false,
+          "show_view_all": true
+        }
+      },
+      "1588186673742": {
+        "type": "featured-blog",
+        "settings": {
+          "title": "Blog posts",
+          "blog": "news",
+          "post_limit": 3,
+          "blog_show_author": false,
+          "blog_show_date": false,
+          "show_view_all": true
+        }
+      },
+      "1593103849209": {
+        "type": "slideshow",
+        "disabled": true,
+        "blocks": {
+          "1593103849209-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/MemoryStitch_Homepage-quilt-on-bed-2022-09-27_v3.jpg",
+              "alignment": "center center",
+              "heading_color": "#293d47",
+              "slide_title_hid": "Custom T-Shirt Quilts For You",
+              "subheading": "",
+              "subheading_color": "#2980b9",
+              "button_label": "Start Creating",
+              "button_color": "#293d47",
+              "button_color_hover": "#26b0c7",
+              "button_link": "shopify:\/\/collections\/all"
+            }
+          }
+        },
+        "block_order": [
+          "1593103849209-1"
+        ],
+        "settings": {
+          "slideshow_height": "adapt",
+          "text_size": "medium",
+          "text_alignment": "center center",
+          "show_overlay": false,
+          "autorotate": true,
+          "autorotate_speed": 5
+        }
+      },
+      "collection-featured": {
+        "type": "collection-featured",
+        "settings": {
+          "layout": "grid",
+          "grid": 4,
+          "rows": 2,
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": true,
+          "tags_enable": true,
+          "how_work_title": "HOW IT WORKS",
+          "how_work_tag": "Helping you tell your story",
+          "faq_title": "The Powerful Men",
+          "faq_tag": "Don’t see an answer to your question here? Contact US"
+        }
+      },
+      "3b02157a-e4e0-4d2f-99a0-4530afa88eca": {
+        "type": "home_responsive-img-header",
+        "settings": {
+          "img_desktop": "shopify:\/\/shop_images\/MS-HP-Summer-2000x670.jpg",
+          "img_mobile": "shopify:\/\/shop_images\/MS-Mobile-HP-Summer-1000x670.jpg",
+          "link": "https:\/\/memorystitch.com\/collections\/all",
+          "img_alt-text": "Meet the Highest Quality Upcycled Quilts from Well-Loved T-shirts!"
+        }
+      },
+      "page_how-it-works": {
+        "type": "page_how-it-works",
+        "settings": {
+          "page_title": "How to Make a Quilt Out of Shirts:<br> 3 Steps to Making T-Shirt Quilts",
+          "page_subtitle": "Making a T-Shirt Quilt Full of Memories is as Easy as 1-2-3.",
+          "step_1_img": "shopify:\/\/shop_images\/MemoryStitch_icons_Collect-Your-Favorite-Shirts_900px.png",
+          "step_1_img_numeral": "shopify:\/\/shop_images\/MemoryStitch_Easy-as-123_numeral-1-60px.png",
+          "step_1_title": "Choose cherished Memories to <br>make a quilt from t-shirts with",
+          "step_1_detail": "<p>Selecting your favorite shirts for your MemoryStitch t-shirt quilt is often challenging. Don’t worry, though, because our different sizes use up to 64 different T-shirt panels. The more t-shirts, the bigger the quilt and the impression it will leave.<\/p>\n        <p>Simply choose your t-shirts (while avoiding any shirts with holes or rips), then wash them one last time.<\/p>",
+          "step_2_img": "shopify:\/\/shop_images\/MemoryStitch_icons_Cut-and-Send-Shirts-To-MemoryStitch_900px.png",
+          "step_2_img_numeral": "shopify:\/\/shop_images\/MemoryStitch_Easy-as-123_numeral-2-60px.png",
+          "step_2_title": "How to Cut Your T-Shirts <br>for your T-Shirt Quilt",
+          "step_2_detail": "<p>Many people enjoy getting close to their t-shirts – and holding those memories – one last time before sending them. If this sounds like you, preparing your shirts is easy. Simply cut your shirt up the side seams to have two pieces: a front and a back. You’ll send us the side of each t-shirt you want included in your quilt.<\/p>\n        <p>If you’d rather trust us to make the necessary cuts, we’re happy to help for a small additional fee. Either way, you can trust that we understand they’re more than t-shirts. They’re some of your most cherished memories, and we’ll treat them that way.<\/p>",
+          "step_3_img": "shopify:\/\/shop_images\/MemoryStitch_icons_We-Send-Your-T-shirt-Quilt_900px.png",
+          "step_3_img_numeral": "shopify:\/\/shop_images\/MemoryStitch_Easy-as-123_numeral-3-60px.png",
+          "step_3_title": "Making a T-Shirt Quilt<br> for a Lifetime of Memories",
+          "step_3_detail": "<p>When you send us your t-shirts, we’ll stitch them together and return them to you in a quilt that will provide  warmth and memories for many years. Once your project is complete, we’ll ship your order to your US address for free!<\/p>",
+          "teamphoto_img": "shopify:\/\/shop_images\/Memory-Stitch-6-web.jpg",
+          "page_endtagline": "Transform Your T-Shirts into the Perfect Gift",
+          "link_label_1": "Create a New Memory Today",
+          "link_1": "https:\/\/memorystitch.com\/collections\/all-t-shirt-quilts",
+          "link_label_2": "Create Yours Today",
+          "link_2": "https:\/\/memorystitch.com\/collections\/all-t-shirt-quilts"
+        }
+      },
+      "featured-blog": {
+        "type": "featured-blog",
+        "settings": {
+          "title": "Blog posts",
+          "blog": "news",
+          "post_limit": 3,
+          "blog_show_author": false,
+          "blog_show_date": true,
+          "show_view_all": true
+        }
+      }
+    },
+    "content_for_index": [
+      "3b02157a-e4e0-4d2f-99a0-4530afa88eca",
+      "1553600458086",
+      "1593103849209",
+      "1567631897603",
+      "1553601358505",
+      "1553602714929",
+      "1553605524035",
+      "1559496569116",
+      "1553862999682",
+      "1553606203110",
+      "1588186673742",
+      "1553669532343"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#69727b",
+      "color_sale_text": "#557B97",
+      "color_borders": "#e8e9eb",
+      "color_button": "#557B97",
+      "color_button_text": "#fff",
+      "color_small_button_text_border": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_text_field_border": "#949494",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#fff",
+      "type_header_font": "work_sans_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "work_sans_n4",
+      "type_base_size": 16,
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "feature-row",
+        "slideshow"
+      ]
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#6d6d6d",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button_text_border": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_text_field_border": "#909090",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "type_bold_product_titles": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "align_logo": "left",
+            "logo": "",
+            "logo_max_width": 135,
+            "main_linklist": "main-menu",
+            "message": true,
+            "color_bg": "#162950",
+            "color_text": "#ffffff"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "alignment": "center",
+            "hero_size": "x-large",
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center center"
+              }
+            },
+            "1492095993817": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "1492095993817"
+          ],
+          "settings": {
+            "slideshow_height": "medium",
+            "text_size": "medium",
+            "autorotate": false,
+            "autorotate_speed": 5
+          }
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "grid": 3,
+            "rows": 1,
+            "show_vendor": true,
+            "show_view_all": true
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "image_size": "medium",
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": false,
+            "enable_zoom": true,
+            "show_share_buttons": true
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "layout": "grid",
+            "grid": 2,
+            "rows": 2,
+            "show_collection_image": true,
+            "show_vendor": false,
+            "sort_enable": true,
+            "tags_enable": true
+          }
+        },
+        "1492033809691": {
+          "type": "map",
+          "settings": {}
+        },
+        "1492033877875": {
+          "type": "quotes",
+          "blocks": {
+            "1492033877875-0": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492033877875-0"
+          ],
+          "settings": {}
+        },
+        "1492033924902": {
+          "type": "custom-content",
+          "blocks": {
+            "1492033924902-0": {
+              "type": "text",
+              "settings": {
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492033924902-0"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "1492096252560": {
+          "type": "collection-list",
+          "blocks": {
+            "1492096252560-0": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-1": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-2": {
+              "type": "featured_collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492096252560-0",
+            "1492096252560-1",
+            "1492096252560-2"
+          ],
+          "settings": {
+            "grid": 3
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "layout": "grid",
+            "blog_show_author": true,
+            "blog_show_date": false
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_author": true,
+            "blog_show_date": true,
+            "show_share_buttons": true
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "cart_notes_enable": false
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "slideshow",
+        "1492033924902",
+        "1492096252560",
+        "1492033877875",
+        "1492033809691"
+      ]
+    }
+  }
+}
